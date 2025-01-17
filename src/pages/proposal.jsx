@@ -48,42 +48,71 @@ const generateEmailTemplate = (formData, selectedDomain) => `
       background-color: #000000;
     }
     .container {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 60px 40px;
       background-color: #000000;
       color: #ffffff;
     }
     .header {
-      margin-bottom: 60px;
+      text-align: center;
+      margin-bottom: 40px;
     }
     .title {
-      font-size: 24px;
+      font-size: 32px;
       font-weight: 600;
+      margin: 0;
+      padding: 0;
     }
     .title span {
       font-weight: 300;
     }
-    .form-row {
-      margin-bottom: 34px;
-    }
-    .form-label {
-      font-size: 12px;
-      color: #ffffff;
-      margin-bottom: 24px;
-      display: block;
-    }
-    .form-value {
+    .subtitle {
       font-size: 16px;
-      padding: 12px 0;
-      border-bottom: 1px solid #333333;
+      color: #ffffff;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .content {
+      margin-top: 60px;
+    }
+    .field {
+      display: flex;
+      margin-bottom: 30px;
+    }
+    .field-label {
+      width: 200px;
+      font-size: 16px;
+      color: #ffffff;
+      font-weight: 400;
+    }
+    .field-value {
+      flex: 1;
+      font-size: 16px;
+      font-weight: 500;
       color: #ffffff;
     }
     .message-box {
-      background-color: #161515;
-      padding: 20px;
-      margin-top: 20px;
+      margin-top: 40px;
+    }
+    .message-label {
+      font-size: 16px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .message-content {
+      background-color: #f5f5f5;
+      padding: 30px;
+      color: #333333;
+      border-radius: 4px;
       min-height: 200px;
+      white-space: pre-line;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #FF4C4C;
+      text-align: left;
     }
   </style>
 </head>
@@ -91,36 +120,35 @@ const generateEmailTemplate = (formData, selectedDomain) => `
   <div class="container">
     <div class="header">
       <h1 class="title">Job & Project <span>Proposals</span></h1>
+      <div class="subtitle">제안이 성공적으로 전송되었습니다. 곧 답변드리겠습니다.</div>
     </div>
     
-    <div class="form-row">
-      <div class="form-group">
-        <div class="form-label">Name / Company</div>
-        <div class="form-value">${formData.nameCompany}</div>
+    <div class="content">
+      <div class="field">
+        <div class="field-label">Name / Company</div>
+        <div class="field-value">${formData.nameCompany}</div>
       </div>
-    </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <div class="form-label">Contact Information</div>
-        <div class="form-value">${formData.contact}</div>
+      <div class="field">
+        <div class="field-label">Contact Information</div>
+        <div class="field-value">${formData.contact}</div>
       </div>
-    </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <div class="form-label">e-mail address</div>
-        <div class="form-value">${formData.email}@${formData.domain || selectedDomain}</div>
+      <div class="field">
+        <div class="field-label">e-mail address</div>
+        <div class="field-value">${formData.email}@${formData.domain || selectedDomain}</div>
       </div>
-    </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <div class="form-label">Message</div>
-        <div class="message-box">
+      <div class="message-box">
+        <div class="message-label">Message</div>
+        <div class="message-content">
           ${formData.message.replace(/\n/g, '<br>')}
         </div>
       </div>
+    </div>
+
+    <div class="footer">
+      * 연락처와 정보가 잘 기재되어 있는지 확인해 주십시오. 답변이 오지 않거나 지연되는 경우, 다시 제안을 부탁드립니다.
     </div>
   </div>
 </body>
