@@ -1,3 +1,4 @@
+// Sendemail.jsx
 import { sendEmail } from './email.jsx';
 
 export const handleEmailSend = async (req) => {
