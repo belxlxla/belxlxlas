@@ -32,7 +32,7 @@
     padding: 32px;
     width: 100%;
     max-width: 1000px;
-    margin: 100px auto;
+    margin: 40px auto;
     height: 1000px;
     display: flex;
     flex-direction: column;
@@ -52,7 +52,7 @@
   .react-list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 14px;
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
@@ -62,7 +62,7 @@
     display: flex;
     overflow: hidden;
     transition: transform 0.3s ease;
-    height: 280px;
+    height: 270px;
     background: transparent;
   }
     
