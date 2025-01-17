@@ -159,8 +159,11 @@ const sendEmail = async (formData, selectedDomain) => {
   const emailTemplate = generateEmailTemplate(formData, selectedDomain);
   const completeEmail = `${formData.email}@${formData.domain || selectedDomain}`;
   
+  // bella : 함수 변경 API URL을 환경 변수에서 가져옴
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+  
   try {
-    const response = await fetch('/api/send-email', {
+    const response = await fetch(`${API_URL}/api/send-email`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -177,7 +180,9 @@ const sendEmail = async (formData, selectedDomain) => {
     });
     
     if (!response.ok) {
-      throw new Error('Failed to send email');
+      const errorData = await response.json().catch(() => ({}));
+      console.error('Email sending failed:', errorData);
+      throw new Error(errorData.message || 'Failed to send email');
     }
     
     return true;
