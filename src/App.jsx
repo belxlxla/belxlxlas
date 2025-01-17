@@ -27,7 +27,9 @@ const MainContent = () => (
     <section id="about" style={{ paddingTop: '100px' }}><About /></section>
     <section id="skills" style={{ paddingTop: '100px' }}><Skills /></section>
     <section id="design" style={{ paddingTop: '200px' }}><Design /></section>
+    <Designwiki />
     <section id="react" style={{ paddingTop: '40px' }}><ReactArea /></section>
+    <ArchiveArea />
     <section id="proposals"><Proposal /></section>
   </div>
 );
