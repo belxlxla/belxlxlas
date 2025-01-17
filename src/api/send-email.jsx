@@ -1,23 +1,34 @@
-// Send-email.jsx
-import express from 'express';
-import { sendEmail } from '../services/email';
+import { sendEmail } from './email.jsx';
 
-const router = express.Router();
-
-router.post('/api/send-email', async (req, res) => {
-  const { to, subject, html, formData } = req.body;
-
+export const handleEmailSend = async (req) => {
   try {
-    const emailSent = await sendEmail(to, subject, html);
+    const { formData } = req.body;
+    
+    // formData가 undefined인 경우 체크
+    if (!formData) {
+      console.error('FormData is missing');
+      return { success: false, message: '데이터가 올바르지 않습니다.' };
+    }
+
+    const emailSubject = 'Job & Project Proposal Confirmation';
+    const emailHtml = `
+      <h2>새로운 제안이 도착했습니다</h2>
+      <p>이름/회사: ${formData.nameCompany}</p>
+      <p>연락처: ${formData.contact}</p>
+      <p>이메일: ${formData.email}@${formData.domain || ''}</p>
+      <p>메시지: ${formData.message}</p>
+    `;
+
+    const recipientEmail = `${formData.email}@${formData.domain || ''}`;
+    const emailSent = await sendEmail(recipientEmail, emailSubject, emailHtml);
+
     if (emailSent) {
-      res.json({ success: true, message: '이메일이 성공적으로 전송되었습니다.' });
+      return { success: true, message: '이메일이 성공적으로 전송되었습니다.' };
     } else {
-      res.status(500).json({ success: false, message: '이메일 전송에 실패했습니다.' });
+      return { success: false, message: '이메일 전송에 실패했습니다.' };
     }
   } catch (error) {
     console.error('Email sending error:', error);
-    res.status(500).json({ success: false, message: '이메일 전송 중 오류가 발생했습니다.' });
+    return { success: false, message: '이메일 전송 중 오류가 발생했습니다.' };
   }
-});
-
-export default router;
+};
