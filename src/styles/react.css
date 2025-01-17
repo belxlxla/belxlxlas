@@ -1,0 +1,231 @@
+.react-wrapper {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .react-wrapper {
+    position: relative;
+    width: 100%;
+    height: 1080px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .react-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .react-container {
+    position: relative;
+    z-index: 5;
+    padding: 32px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 120px auto;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .react-title {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  
+  .react-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .react-card {
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 280px;
+    background: transparent;
+  }
+    
+  .react-card-title {
+    color: #000;
+    font-size: 20px;
+    margin-top: 8px;
+    font-weight: 600;
+    margin-left: 0;
+  }
+  
+  .react-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .react-image-section {
+    position: relative;
+    width: 50%;
+  }
+  
+  .react-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .vandi-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .vandi-logo-container {
+    position: relative;
+  }
+  
+  .vandi-logo {
+    width: 96px;
+    height: 96px;
+  }
+  
+  .vandi-text {
+    position: absolute;
+    top: -24px;
+    right: 0;
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  
+  .vanish-title {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: #ffffff;
+    font-family: monospace;
+  }
+  
+  .react-content {
+    width: 50%;
+    padding: 24px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .react-header {
+    margin-bottom: 24px;
+  }
+  
+  .react-date {
+    color: #8A8A8A;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  h3.react-title {
+    color: #000;
+    font-size: 20px;
+    margin-top: 8px;
+    font-weight: 600;
+    margin-left: 0;
+  }
+  
+  .language-section {
+    margin-bottom: 24px;
+  }
+  
+  .language-title {
+    color: #000;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .language-bar {
+    height: 8px;
+    background: #eee;
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .js-bar {
+    background-color: #F0DB4F;
+    height: 100%;
+  }
+  
+  .css-bar {
+    background-color: #1758A7;
+    height: 100%;
+  }
+  
+  .html-bar {
+    background-color: #E44D26;
+    height: 100%;
+  }
+  
+  .language-labels {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .js-label { color: #f1e05a; }
+  .css-label { color: #563d7c; }
+  .html-label { color: #e34c26; }
+  
+  .react-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ff69b4;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    font-weight: 600;
+  }
+  
+  .react-link.hovered {
+    gap: 16px;
+  }
+  
+  .react-arrow {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .react-link.hovered .react-arrow {
+    transform: translateX(4px);
+  }
+
+  .website-link .arrow-icon {
+  display: none;
+}
+  
+  @media (min-width: 900px) {
+    .react-container {
+      padding: 48px;
+    }
+  }

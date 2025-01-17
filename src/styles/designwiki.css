@@ -1,0 +1,183 @@
+/* designwiki.css */
+.design-wiki {
+    width: 100%;
+    max-width: 1920px;
+    height: 1400px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  
+  .wiki-content {
+    width: 100%;
+    max-width: 900px;
+    height: 1200px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+  
+  .wiki-content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .wiki-title-wrapper {
+    margin-bottom: 120px;
+  }
+  
+  .wiki-title-wrapper h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .wiki {
+    color: #fff;
+    font-weight: 300;
+    font-size: 24px;
+  }
+  
+  .wiki-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .wiki-item {
+    border-top: 1px solid #555;
+  }
+  
+  .wiki-header {
+    padding: 32px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+  }
+  
+  .wiki-date {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #8A8A8A;
+    width: 100px;
+    flex-shrink: 0;
+  }
+  
+  .wiki-title {
+    flex: 1;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .after-image-text {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #B0B0B0;
+    margin: 24px 0 0 0;
+    word-break: break-word; 
+  }
+  
+  .toggle-button {
+    background: none;
+    right: 10px; 
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative; 
+  }
+
+  .toggle-image-container {
+    position: relative;
+    width: 40px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+  
+  .toggle-arrow {
+    position: absolute;
+    width: 40px;
+    height: 14px;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  }
+
+  .toggle-arrow.hidden {
+    opacity: 0;
+}
+
+.toggle-arrow.visible {
+    opacity: 1;
+}
+
+.toggle-arrow.up {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.toggle-arrow.down {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+  
+  .wiki-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0, 0.1, 0.7, 1);
+    padding: 0 40px;
+    opacity: 0;
+    width: 100%;
+  }
+  
+  .wiki-item.open .wiki-body {
+    max-height: 2000px;
+    padding: 20px 80px 80px 136px; 
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .wiki-body p {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #B0B0B0;
+    margin: 0 0 24px 0;
+    word-break: break-word;
+  }
+  
+  .content-image {
+    width: 100%;
+    height: auto;
+    padding-bottom: 24px;
+  }
+  
+  .wiki-item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }

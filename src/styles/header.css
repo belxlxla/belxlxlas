@@ -1,0 +1,119 @@
+/* Header.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  z-index: 1000;
+  }
+
+  .header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.86);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: -1;
+  }
+  
+  .nav-container {
+    position: relative;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .logo-bella {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+  }
+  
+  .logo-atelier {
+    font-family: 'The Chairman', serif;
+    font-size: 34px;
+    color: #fff;
+  }
+
+  .nav-text-light {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
+  
+  .nav-text-semibold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+  
+  .nav-bold-semibold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+  
+  .nav-text, .nav-bold {
+    font-family: 'Montserrat', sans-serif;
+    color: inherit;
+    transition: color 0.3s ease;
+    font-weight: 600;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .nav-item {
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 0.3s ease;
+  }
+
+  .nav-item:hover {
+    color: #FF4CA0;
+  }
+
+  .nav-text, .nav-bold {
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.4s ease-in-out;
+  }
+  
+  .nav-link-semibold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.4s ease-in-out;
+  }
+  
+  .nav-link:hover,
+  .nav-link-semibold:hover {
+    color: #FF4CA0;
+  }

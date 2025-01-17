@@ -1,0 +1,196 @@
+/* Design.css */
+.design {
+    min-height: 100vh;
+    background-color: #000;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .design h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-size: 24px;
+  }
+  
+  .design-slider {
+    width: 100%;
+    max-width: 1920px;
+    height: 1080px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .slides-container {
+    position: relative;
+    width: 500px;
+    height: 100%;
+    margin: 0 auto;
+  }
+  
+  .nav-button {
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+    transition: opacity 0.3s;
+  }
+  
+  .nav-button img {
+    width: 44px;
+    height: 86px;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+  }
+  
+  .nav-button:hover img {
+    opacity: 1;
+  }
+  
+  .nav-button.prev {
+    left: 30%;
+  }
+  
+  .nav-button.next {
+    right: 30%;
+  }
+  
+  .nav-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .design-card {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: 100px;
+  }
+  
+  .design-card.active {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 2;
+  }
+  
+  .design-card.prev {
+    transform: translateX(-120%);
+    opacity: 0.3;
+    z-index: 1;
+    filter: blur(12px);
+  }
+  
+  .design-card.next {
+    transform: translateX(110%);
+    opacity: 0.3;
+    z-index: 1;
+    filter: blur(12px);
+  }
+  
+  .design-card.hidden {
+    transform: translateX(200%);
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .card-inner {
+    background: #fff;
+    overflow: hidden;
+  }
+  
+  .design-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .design-details {
+    padding: 30px;
+  }
+  
+  .design-category {
+    color: #402E42;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .design-title {
+    font-size: 26px;
+    color: #000;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .design-subtitle {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .design-description {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #402E42;
+    white-space: pre-line;
+    margin: 0;
+    letter-spacing: -0.03rem;
+  }
+  
+  .divider {
+    height: 1px;
+    background-color: #CFCFCF;
+    margin: 20px 0;
+  }
+  
+  .scrollable-description {
+    max-height: 140px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 20px 0;
+    padding-right: 20px;
+  }
+  
+  .scrollable-description::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .scrollable-description::-webkit-scrollbar-track {
+    background: #EFEFEF;
+  }
+  
+  .scrollable-description::-webkit-scrollbar-thumb {
+    background: #CFCFCF;
+  }
+  
+  .stacks-section {
+    margin-top: 20px;
+  }
+  
+  .stacks-title {
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 12px;
+    font-weight: 300;
+  }
+  
+  .stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .stack-tag {
+    background: #402E42;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+  }
