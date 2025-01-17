@@ -164,6 +164,32 @@
     animation: slideIn 0.3s ease;
     box-shadow: 0 4px 24px #000;
   }
+
+  .proposal-alert-confirm {
+    background-color: #222222;
+    color: #fff;
+    border: none;
+    padding: 12px 40px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .proposal-alert-confirm:hover {
+    background-color: #FF4CA0;
+  }
+
+  .proposal-alert-error {
+    border-top: 1px solid #FF4C4C;
+  }
+
+  .proposal-alert-confirm-error {
+    background-color: #222222;
+  }
+
+  .proposal-alert-confirm-error:hover {
+    background-color: #FF4C4C;
+  }
   
   @keyframes fadeIn {
     from {
