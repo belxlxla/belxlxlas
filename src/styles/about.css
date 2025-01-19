@@ -114,3 +114,122 @@
 .about-highlight {
   color: #FF4CA0;
 }
+
+/* 기존 CSS 유지하고 미디어 쿼리 추가 */
+
+/* 태블릿 반응형 */
+@media (max-width: 1024px) {
+  .about-container {
+    padding: 0 20px;
+  }
+
+  .about-content {
+    gap: 40px;
+  }
+
+  .about-profile-image {
+    flex: 0 0 400px;
+  }
+
+  .about-name-img {
+    max-width: 400px;
+  }
+}
+
+/* bella : 모바일 반응형 */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 80px 0;
+    min-height: auto;
+  }
+
+  .about-container {
+    padding: 0 60px;
+  }
+
+  .about-header {
+    margin-bottom: 40px;
+  }
+
+  .about-sub-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    word-break: keep-all;
+  }
+
+  .about-sub-description {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .about-name-img {
+    max-width: 280px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about-profile-image {
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .about-intro {
+    font-size: 16px;
+    margin-bottom: 24px;
+    word-break: keep-all;
+  }
+
+  .about-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    word-break: keep-all;
+  }
+
+  .about-description br {
+    display: none;
+  }
+
+  .about-quote {
+    font-size: 16px;
+    margin-top: 30px;
+    word-break: keep-all;
+  }
+
+  .about-quote br {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .about-sub-title {
+    font-size: 16px;
+  }
+
+  .about-sub-description {
+    font-size: 20px;
+  }
+
+  .about-name-img {
+    max-width: 240px;
+  }
+
+  .about-profile-image {
+    max-width: 320px;
+  }
+
+  .about-intro,
+  .about-description,
+  .about-quote {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}

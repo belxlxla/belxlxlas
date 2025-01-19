@@ -181,3 +181,173 @@
   .wiki-item:last-child {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
+
+  /* bella : 모바일 반응형 */
+@media (max-width: 1024px) {
+  .design-wiki {
+    height: auto;
+    padding: 60px 20px;
+  }
+
+  .wiki-content {
+    height: auto;
+    max-width: 700px;
+    margin-bottom: 0;
+  }
+
+  .wiki-title-wrapper {
+    margin-bottom: 80px;
+  }
+
+  .wiki-item.open .wiki-body {
+    padding: 20px 40px 60px 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .design-wiki {
+    padding: 40px 20px;
+  }
+
+  .wiki-title-wrapper {
+    margin-bottom: 100px;
+  }
+
+  .wiki-title-wrapper h1 {
+    font-size: 24px;
+  }
+
+  .wiki-header {
+    padding: 24px 0;
+    gap: 20px;
+  }
+
+  .wiki-date {
+    font-size: 16px;
+    width: 70px;
+  }
+
+  .wiki-title {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .wiki-body {
+    padding: 0 20px;
+  }
+
+  .wiki-item.open .wiki-body {
+    padding: 10px 10px 40px 90px;
+  }
+
+  .wiki-body p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .toggle-button {
+    width: 24px;
+    height: 24px;
+  }
+
+  .toggle-image-container {
+    width: 30px;
+    height: 12px;
+  }
+
+  .toggle-arrow {
+    width: 30px;
+    height: 12px;
+  }
+
+  .after-image-text {
+    font-size: 14px;
+    margin: 20px 0 0 0;
+  }
+
+  .content-image {
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .design-wiki {
+    padding: 30px 15px;
+  }
+
+  .wiki-title-wrapper {
+    margin-bottom: 30px;
+  }
+
+  .wiki-title-wrapper h1 {
+    font-size: 18px;
+  }
+
+  .wiki-header {
+    padding: 20px 0;
+    gap: 15px;
+  }
+
+  .wiki-date {
+    font-size: 11px;
+    width: 60px;
+  }
+
+  .wiki-title {
+    font-size: 14px;
+  }
+
+  .wiki-item.open .wiki-body {
+    padding: 15px 15px 30px 75px;
+  }
+
+  .wiki-body p {
+    font-size: 13px;
+    margin: 0 0 20px 0;
+  }
+
+  .toggle-image-container {
+    width: 24px;
+    height: 10px;
+  }
+
+  .toggle-arrow {
+    width: 24px;
+    height: 10px;
+  }
+
+  .after-image-text {
+    font-size: 13px;
+    margin: 15px 0 0 0;
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .design-wiki {
+    padding: 30px 20px;
+  }
+
+  .wiki-content {
+    margin-bottom: 0;
+  }
+
+  .wiki-item.open .wiki-body {
+    max-height: 3000px;
+  }
+
+  .content-image {
+    max-width: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@media (hover: none) {
+  .wiki-header {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .toggle-button:active {
+    opacity: 0.7;
+  }
+}

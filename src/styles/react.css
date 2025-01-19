@@ -230,3 +230,208 @@
       padding: 48px;
     }
   }
+
+  /* bella : 모바일 반응형 */
+@media (max-width: 1024px) {
+  .react-container {
+    padding: 24px;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .react-list {
+    gap: 20px;
+  }
+
+  .react-card {
+    height: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .react-wrapper {
+    height: auto;
+    padding-bottom: 100px;
+  }
+
+  .react-container {
+    padding: 20px;
+    margin: 0;
+  }
+
+  .react-title {
+    font-size: 24px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  .react-list {
+    gap: 24px;
+  }
+
+  .react-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .react-image-section {
+    width: 100%;
+    height: 300px;
+  }
+
+  .react-content {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .react-header {
+    margin-bottom: 20px;
+  }
+
+  .react-date {
+    font-size: 12px;
+  }
+
+  .react-card-title {
+    font-size: 18px;
+    margin-top: 6px;
+  }
+
+  .language-section {
+    margin-bottom: 20px;
+  }
+
+  .language-title {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .language-bar {
+    height: 6px;
+  }
+
+  .language-labels {
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 11px;
+  }
+
+  .react-link {
+    font-size: 13px;
+    padding: 10px 0;
+  }
+
+  .react-arrow {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* 작은 모바일 화면 */
+@media (max-width: 480px) {
+  .react-wrapper {
+    padding-bottom: 30px;
+  }
+
+  .react-container {
+    padding: 15px;
+  }
+
+  .react-title {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .react-list {
+    gap: 20px;
+  }
+
+  .react-image-section {
+    height: 180px;
+  }
+
+  .react-content {
+    padding: 15px;
+  }
+
+  .react-card-title {
+    font-size: 16px;
+  }
+
+  .language-section {
+    margin-bottom: 15px;
+  }
+
+  .language-title {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .language-labels {
+    gap: 8px;
+    font-size: 10px;
+  }
+
+  /* 반응형에서의 Vandi 로고 크기 조정 */
+  .vandi-logo {
+    width: 72px;
+    height: 72px;
+  }
+
+  /* 언어 바 레이블 조정 */
+  .language-labels {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .js-label, .css-label, .html-label {
+    white-space: nowrap;
+  }
+}
+
+/* 가로 모드 모바일 최적화 */
+@media (max-height: 480px) and (orientation: landscape) {
+  .react-wrapper {
+    padding: 20px 0;
+  }
+
+  .react-card {
+    flex-direction: row;
+    height: 200px;
+  }
+
+  .react-image-section {
+    width: 50%;
+    height: 100%;
+  }
+
+  .react-content {
+    width: 50%;
+  }
+
+  .language-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* 터치 디바이스 최적화 */
+@media (hover: none) {
+  .react-card {
+    transform: none !important;
+  }
+
+  .react-link {
+    padding: 12px 0;
+  }
+
+  .react-link:active {
+    opacity: 0.7;
+  }
+
+  .react-arrow {
+    transition: none;
+  }
+}

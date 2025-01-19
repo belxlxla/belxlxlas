@@ -87,3 +87,80 @@
       transform: translateY(0);
     }
   }
+
+  /* bella : 모바일 */
+@media (max-width: 768px) {
+  .content-container {
+    padding: 1rem;
+    align-items: flex-start;
+    padding-top: 60px;
+  }
+
+  .content-wrapper {
+    gap: 1.5rem;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: normal;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  /* 비디오 배치 최적화 */
+  .background-video {
+    object-position: center;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-container {
+    padding-top: 30%;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .intro-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  .background-video {
+    object-position: 65% center;
+  }
+
+  .content-container {
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .content-container {
+    padding-top: 15%;
+  }
+
+  .content-wrapper {
+    gap: 1rem;
+  }
+
+  .intro-text {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .main-title {
+    font-size: 1.8rem;
+  }
+}

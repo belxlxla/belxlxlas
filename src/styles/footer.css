@@ -86,3 +86,151 @@
     font-size: 14px;
     color: #fff;
   }
+
+  /* bella : 모바일 */
+@media (max-width: 1024px) {
+  .footer-container {
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .footer-content {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .footer-details {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 30px 20px;
+  }
+
+  .footer-profile-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .footer-profile-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .footer-info {
+    gap: 24px;
+    align-items: center;
+  }
+
+  .footer-details {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .footer-left, .footer-right {
+    gap: 16px;
+  }
+
+  .footer-detail-item {
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .footer-label {
+    font-size: 13px;
+    width: 50px;
+    text-align: right;
+  }
+
+  .footer-value {
+    font-size: 13px;
+    text-align: left;
+  }
+
+  .footer-name,
+  .footer-title-separator {
+    font-size: 16px;
+  }
+
+  .footer-atelier {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 24px 15px;
+  }
+
+  .footer-profile-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .footer-name,
+  .footer-title-separator {
+    font-size: 14px;
+  }
+
+  .footer-atelier {
+    font-size: 26px;
+  }
+
+  .footer-detail-item {
+    gap: 20px;
+  }
+
+  .footer-label {
+    font-size: 12px;
+    width: 45px;
+  }
+
+  .footer-value {
+    font-size: 12px;
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .footer-container {
+    padding: 20px;
+  }
+
+  .footer-profile-card {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+  }
+
+  .footer-info {
+    align-items: flex-start;
+  }
+
+  .footer-details {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .footer-detail-item {
+    justify-content: flex-start;
+  }
+}
+
+@media (hover: none) {
+  .footer-link {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .footer-link:active {
+    opacity: 0.7;
+  }
+}
+
+.footer-link:focus {
+  outline: none;
+  text-decoration: underline;
+}
