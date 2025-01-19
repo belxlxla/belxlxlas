@@ -1,5 +1,4 @@
 // Proposal.jsx
-
 import React, { useState } from 'react';
 import '../styles/proposal.css';
 

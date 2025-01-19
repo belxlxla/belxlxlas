@@ -72,7 +72,7 @@ const Skills = () => {
           name: 'Mac', 
           icon: macIcon, 
           category: 'OS',
-          proficiency: 80,
+          proficiency: 80, // bella : 수치 조절하면 그래프가 바뀜
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #fff)'
         },
         { 

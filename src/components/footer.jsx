@@ -1,3 +1,4 @@
+// Footer.jsx
 import React from 'react';
 import '../styles/footer.css';
 import footerProfile from '../assets/footerprofile.svg';

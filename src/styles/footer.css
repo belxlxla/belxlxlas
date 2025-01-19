@@ -1,236 +1,236 @@
-/* Footer.css */
-.footer-container {
-    width: 100%;
-    height: 300px;
-    background-color: #1E181F;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* Footer.css */
+  .footer-container {
+  width: 100%;
+  height: 300px;
+  background-color: #1E181F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   }
-  
+
   .footer-content {
-    width: 900px;
-    display: flex;
-    justify-content: center;
+  width: 900px;
+  display: flex;
+  justify-content: center;
   }
-  
+
   .footer-profile-card {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
   }
-  
+
   .footer-profile-image {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
   }
-  
+
   .footer-info {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   }
-  
+
   .footer-title {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   }
-  
+
   .footer-name {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
   }
-  
+
   .footer-title-separator {
-    font-family: 'Montserrat', sans-serif;
-    color: #fff;
-    font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  font-size: 18px;
   }
-  
+
   .footer-atelier {
-    font-family: 'The Chairman', serif;
-    font-size: 34px;
-    color: #fff;
+  font-family: 'The Chairman', serif;
+  font-size: 34px;
+  color: #fff;
   }
-  
+
   .footer-details {
-    display: flex;
-    gap: 120px;
+  display: flex;
+  gap: 120px;
   }
-  
+
   .footer-left, .footer-right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   }
-  
+
   .footer-detail-item {
-    display: flex;
-    gap: 60px;
-    align-items: center;
+  display: flex;
+  gap: 60px;
+  align-items: center;
   }
-  
+
   .footer-label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    color: #fff;
-    width: 60px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #fff;
+  width: 60px;
   }
-  
+
   .footer-value {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #fff;
   }
 
   /* bella : 모바일 */
-@media (max-width: 1024px) {
+  @media (max-width: 1024px) {
   .footer-container {
-    height: auto;
-    padding: 40px 20px;
+  height: auto;
+  padding: 40px 20px;
   }
 
   .footer-content {
-    width: 100%;
-    max-width: 700px;
+  width: 100%;
+  max-width: 700px;
   }
 
   .footer-details {
-    gap: 60px;
+  gap: 60px;
   }
-}
+  }
 
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
   .footer-container {
-    padding: 30px 20px;
+  padding: 30px 20px;
   }
 
   .footer-profile-card {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
   }
 
   .footer-profile-image {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
   }
 
   .footer-info {
-    gap: 24px;
-    align-items: center;
+  gap: 24px;
+  align-items: center;
   }
 
   .footer-details {
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
   }
 
   .footer-left, .footer-right {
-    gap: 16px;
+  gap: 16px;
   }
 
   .footer-detail-item {
-    gap: 30px;
-    justify-content: center;
+  gap: 30px;
+  justify-content: center;
   }
 
   .footer-label {
-    font-size: 13px;
-    width: 50px;
-    text-align: right;
+  font-size: 13px;
+  width: 50px;
+  text-align: right;
   }
 
   .footer-value {
-    font-size: 13px;
-    text-align: left;
+  font-size: 13px;
+  text-align: left;
   }
 
   .footer-name,
   .footer-title-separator {
-    font-size: 16px;
+  font-size: 16px;
   }
 
   .footer-atelier {
-    font-size: 30px;
+  font-size: 30px;
   }
-}
+  }
 
-@media (max-width: 480px) {
+  @media (max-width: 480px) {
   .footer-container {
-    padding: 24px 15px;
+  padding: 24px 15px;
   }
 
   .footer-profile-image {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
   }
 
   .footer-name,
   .footer-title-separator {
-    font-size: 14px;
+  font-size: 14px;
   }
 
   .footer-atelier {
-    font-size: 26px;
+  font-size: 26px;
   }
 
   .footer-detail-item {
-    gap: 20px;
+  gap: 20px;
   }
 
   .footer-label {
-    font-size: 12px;
-    width: 45px;
+  font-size: 12px;
+  width: 45px;
   }
 
   .footer-value {
-    font-size: 12px;
+  font-size: 12px;
   }
-}
+  }
 
-@media (max-height: 480px) and (orientation: landscape) {
+  @media (max-height: 480px) and (orientation: landscape) {
   .footer-container {
-    padding: 20px;
+  padding: 20px;
   }
 
   .footer-profile-card {
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
   }
 
   .footer-info {
-    align-items: flex-start;
+  align-items: flex-start;
   }
 
   .footer-details {
-    flex-direction: row;
-    gap: 40px;
+  flex-direction: row;
+  gap: 40px;
   }
 
   .footer-detail-item {
-    justify-content: flex-start;
+  justify-content: flex-start;
   }
-}
+  }
 
-@media (hover: none) {
+  @media (hover: none) {
   .footer-link {
-    -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
   }
 
   .footer-link:active {
-    opacity: 0.7;
+  opacity: 0.7;
   }
-}
+  }
 
-.footer-link:focus {
+  .footer-link:focus {
   outline: none;
   text-decoration: underline;
-}
+  }

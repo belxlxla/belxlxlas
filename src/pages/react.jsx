@@ -1,3 +1,4 @@
+// React.jsx
 import React, { useState } from 'react';
 import '../styles/react.css';
 import reactVideo from '../assets/video1.mp4';

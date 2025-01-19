@@ -43,7 +43,7 @@ const ArchiveArea = () => {
   
                 <div className="commit-info">
                     <img src={gitArrow} alt="git arrow" className="commit-number" />
-                    <span className="commit-text">Created 2 commits in 1 repository</span>
+                    <span className="commit-text">Created 43 commits in 2 repository</span> {/* 레포지토리 업데이트 부분 */}
                     </div>
               </div>
             </div>

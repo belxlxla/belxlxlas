@@ -45,10 +45,10 @@ const Main = () => {
     };
   }, []);
 
-  // 모바일 버전의 텍스트
+  // bella : 모바일 버전의 텍스트
   const mobileIntroText = `With the conviction that 'design is an endless journey of evolution,' I continue to push boundaries and embrace new challenges each day. I'm passionate about creating innovative design journeys with everyone I collaborate with.`;
 
-  // 데스크톱 버전의 텍스트
+  // bella : 데스크톱 버전의 텍스트
   const desktopIntroText = `With the conviction that 'design is an endless journey of ${'\n'}
     evolution,' I continue to push boundaries and ${'\n'}
     embrace new challenges each day. I'm passionate about ${'\n'}
@@ -62,7 +62,7 @@ const Main = () => {
         loop 
         muted 
         playsInline
-        poster={mainVideo.replace('.mp4', '.jpg')} // 비디오 로딩 전 표시될 이미지
+        poster={mainVideo.replace('.mp4', '.jpg')} 
       >
         <source src={mainVideo} type="video/mp4" />
       </video>
