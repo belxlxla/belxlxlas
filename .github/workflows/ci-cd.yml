@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
 
       # 3. 의존성 캐싱 및 설치
       - name: Cache Node.js modules
