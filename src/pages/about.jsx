@@ -31,7 +31,7 @@ const About = () => {
             <div className="about-container" ref={sectionRef}>
                 <div className="about-header">
                     <p className="about-sub-title">
-                        <span className="about-text-bold">사용자 경험을 디자인</span>
+                        <span className="about-text-bold">!!사용자 경험을 디자인</span>
                         <span className="about-text-light">하는 </span>
                         <span className="about-text-bold">15년차 시니어 아트디렉터</span>
                     </p>
