@@ -3,8 +3,6 @@ import { sendEmail } from "./email.js";
 // 이메일 전송 핸들러 함수
 export const handleEmailSend = async (req, res) => {
   try {
-    console.log("Received Request Body:", req.body);
-
     const { formData, template } = req.body;
 
     if (!formData || !template) {
@@ -21,7 +19,10 @@ export const handleEmailSend = async (req, res) => {
       console.error("Invalid email address:", completeEmail);
       return res
         .status(400)
-        .json({ success: false, message: "올바른 이메일 주소를 입력해주세요." });
+        .json({
+          success: false,
+          message: "올바른 이메일 주소를 입력해주세요.",
+        });
     }
 
     const smtpUser = process.env.SMTP_USER;
@@ -32,7 +33,7 @@ export const handleEmailSend = async (req, res) => {
         .json({ success: false, message: "SMTP 설정이 누락되었습니다." });
     }
 
-     // 관리자에게 보낼 이메일 생성
+    // 관리자에게 보낼 이메일 생성
     const adminSubject = "새로운 제안이 도착했습니다!";
     const adminHtml = `
       <h2>새로운 제안이 도착했습니다</h2>
@@ -56,7 +57,10 @@ export const handleEmailSend = async (req, res) => {
       console.log("Emails sent successfully");
       return res
         .status(200)
-        .json({ success: true, message: "이메일이 성공적으로 전송되었습니다." });
+        .json({
+          success: true,
+          message: "이메일이 성공적으로 전송되었습니다.",
+        });
     } else {
       console.error("Failed to send emails:", {
         adminEmail: adminEmailSent,

@@ -12,11 +12,11 @@ const app = express();
 
 // CORS 설정
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://belxlxla.com"], 
-  methods: ["GET", "POST"], 
+  origin: ["http://localhost:3000", "https://belxlxla.com"],
+  methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
-app.use(cors(corsOptions)); 
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
@@ -24,11 +24,11 @@ const publicPath = path.join(__dirname, "public");
 app.use(express.static(publicPath));
 
 // AWS 상태 체크
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "OK", timestamp: new Date().toISOString() });
 });
 
-// 메일 발송 
+// 메일 발송
 app.post("/api/send-email", handleEmailSend);
 
 app.get("*", (req, res) => {
