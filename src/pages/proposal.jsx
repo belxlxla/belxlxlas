@@ -175,7 +175,7 @@ const sendEmail = async (formData, selectedDomain) => {
 
   const emailHtml = generateEmailTemplate(formData, selectedDomain);
 
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+  const API_URL = process.env.REACT_APP_API_URL || "https://www.belxlxla.com";
 
   try {
     const response = await fetch(`${API_URL}/api/send-email`, {
