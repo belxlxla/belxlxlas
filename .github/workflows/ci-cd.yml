@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       # 3. 의존성 캐싱 및 설치
       - name: Cache Node.js modules
@@ -33,11 +33,13 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # 4. React 애플리케이션 빌드
       - name: Build React app
-        run: npm run build
+        run: |
+          npm run build
+          echo "React app built successfully."
 
       # 5. Docker 이미지 빌드 및 태깅
       - name: Build and tag Docker image
@@ -57,7 +59,7 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: |
           docker push kyle0321a/belxlxlas:latest
-          docker push kyle0321a/belxlxlas:${{ github.sha }}
+          docker push kyle0321a/belxlxlas:${{ github.run_number  }}
 
       # 8. AWS 서버에 배포
       - name: Deploy to AWS
