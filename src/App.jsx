@@ -18,7 +18,7 @@ import ReactArea from './pages/react.jsx';
 import ArchiveArea from './pages/archive.jsx';
 import Proposal from './pages/proposal.jsx';
 
-// 채널톡 Plugin Key
+// Plugin Key
 const CHANNEL_PLUGIN_KEY = 'b14f14c2-d96f-4696-b128-0f8d84e8609f';
 
 const MainContent = () => (
@@ -35,49 +35,15 @@ const MainContent = () => (
 );
 
 const App = () => {
+  // 채널톡
   useEffect(() => {
-    // 채널톡 초기화
     ChannelService.loadScript();
     ChannelService.boot({
       pluginKey: CHANNEL_PLUGIN_KEY
     });
 
-    // 이미지 락
-    const preventImageDownload = (e) => {
-      e.preventDefault();
-      return false;
-    };
-
-    document.addEventListener('contextmenu', preventImageDownload);
-    document.addEventListener('dragstart', preventImageDownload);
-
-    const applyImageProtection = () => {
-      const images = document.getElementsByTagName('img');
-      Array.from(images).forEach(img => {
-        img.draggable = false;
-        img.addEventListener('contextmenu', preventImageDownload);
-        img.addEventListener('dragstart', preventImageDownload);
-      });
-    };
-
-    applyImageProtection();
-    const observer = new MutationObserver(applyImageProtection);
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-
     return () => {
       ChannelService.shutdown();
-      document.removeEventListener('contextmenu', preventImageDownload);
-      document.removeEventListener('dragstart', preventImageDownload);
-      observer.disconnect();
-
-      const images = document.getElementsByTagName('img');
-      Array.from(images).forEach(img => {
-        img.removeEventListener('contextmenu', preventImageDownload);
-        img.removeEventListener('dragstart', preventImageDownload);
-      });
     };
   }, []);
 

@@ -1,456 +1,437 @@
   /* Proposal.css */
   .react-wrapper {
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   }
 
   .react-wrapper {
-    position: relative;
-    width: 100%;
-    height: 1080px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-
-  .react-video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  position: relative;
+  width: 100%;
+  height: 1080px;
+  margin: 0 auto;
+  overflow: hidden;
   }
 
   .react-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
   }
 
   .react-container {
-    position: relative;
-    z-index: 5;
-    padding: 32px;
-    width: 100%;
-    max-width: 1000px;
-    margin: 40px auto;
-    height: 1000px;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  z-index: 5;
+  padding: 32px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
   }
 
   .react-title {
-    width: 100%;
-    position: relative;
-    z-index: 10;
-    color: #fff;
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 60px;
-    text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 60px;
+  text-align: center;
   }
 
   .react-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
   }
 
   .react-card {
-    display: flex;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    height: 270px;
-    background: transparent;
+  display: flex;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  height: 270px;
+  background: transparent;
   }
 
   .react-card-title {
-    color: #000;
-    font-size: 20px;
-    margin-top: 8px;
-    font-weight: 600;
-    margin-left: 0;
+  color: #000;
+  font-size: 20px;
+  margin-top: 8px;
+  font-weight: 600;
+  margin-left: 0;
   }
 
   .react-card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
   }
 
   .react-image-section {
-    position: relative;
-    width: 50%;
+  position: relative;
+  width: 50%;
   }
 
   .react-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   }
 
   .vandi-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   }
 
   .vandi-logo-container {
-    position: relative;
+  position: relative;
   }
 
   .vandi-logo {
-    width: 96px;
-    height: 96px;
+  width: 96px;
+  height: 96px;
   }
 
   .vandi-text {
-    position: absolute;
-    top: -24px;
-    right: 0;
-    color: #ffffff;
-    text-decoration: underline;
+  position: absolute;
+  top: -24px;
+  right: 0;
+  color: #ffffff;
+  text-decoration: underline;
   }
 
   .vanish-title {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    color: #ffffff;
-    font-family: monospace;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: #ffffff;
+  font-family: monospace;
   }
 
   .react-content {
-    width: 50%;
-    padding: 24px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
+  width: 50%;
+  padding: 24px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
   }
 
   .react-header {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
   }
 
   .react-date {
-    color: #8A8A8A;
-    font-size: 14px;
-    font-weight: bold;
+  color: #8A8A8A;
+  font-size: 14px;
+  font-weight: bold;
   }
 
   h3.react-title {
-    color: #000;
-    font-size: 20px;
-    margin-top: 8px;
-    font-weight: 600;
-    margin-left: 0;
+  color: #000;
+  font-size: 20px;
+  margin-top: 8px;
+  font-weight: 600;
+  margin-left: 0;
   }
 
   .language-section {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
   }
 
   .language-title {
-    color: #000;
-    font-size: 14px;
-    margin-bottom: 20px;
+  color: #000;
+  font-size: 14px;
+  margin-bottom: 20px;
   }
 
   .language-bar {
-    height: 8px;
-    background: #eee;
-    overflow: hidden;
-    display: flex;
+  height: 8px;
+  background: #eee;
+  overflow: hidden;
+  display: flex;
   }
 
   .js-bar {
-    background-color: #F0DB4F;
-    height: 100%;
+  background-color: #F0DB4F;
+  height: 100%;
   }
 
   .css-bar {
-    background-color: #1758A7;
-    height: 100%;
+  background-color: #1758A7;
+  height: 100%;
   }
 
   .html-bar {
-    background-color: #E44D26;
-    height: 100%;
+  background-color: #E44D26;
+  height: 100%;
   }
 
   .language-labels {
-    display: flex;
-    gap: 16px;
-    margin-top: 8px;
-    font-size: 12px;
-    font-weight: bold;
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: bold;
   }
 
-  .js-label {
-    color: #f1e05a;
-  }
-
-  .css-label {
-    color: #563d7c;
-  }
-
-  .html-label {
-    color: #e34c26;
-  }
+  .js-label { color: #f1e05a; }
+  .css-label { color: #563d7c; }
+  .html-label { color: #e34c26; }
 
   .react-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #ff69b4;
-    text-decoration: none;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    margin-top: auto;
-    font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff69b4;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  font-weight: 600;
   }
 
   .react-link.hovered {
-    gap: 16px;
+  gap: 16px;
   }
 
   .react-arrow {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
   }
 
   .react-link.hovered .react-arrow {
-    transform: translateX(4px);
+  transform: translateX(4px);
   }
 
   .website-link .arrow-icon {
-    display: none;
+  display: none;
   }
 
   @media (min-width: 900px) {
-    .react-container {
-      padding: 48px;
-    }
+  .react-container {
+  padding: 48px;
+  }
   }
 
   /* bella : 모바일 */
   @media (max-width: 1024px) {
-    .react-container {
-      padding: 24px;
-      height: auto;
-      margin: 20px auto;
-    }
+  .react-container {
+  padding: 24px;
+  height: auto;
+  margin: 20px auto;
+  }
 
-    .react-list {
-      gap: 20px;
-    }
+  .react-list {
+  gap: 20px;
+  }
 
-    .react-card {
-      height: 240px;
-    }
+  .react-card {
+  height: 240px;
+  }
   }
 
   @media (max-width: 768px) {
-    .react-wrapper {
-      height: auto;
-      padding-bottom: 100px;
-    }
+  .react-wrapper {
+  height: auto;
+  padding-bottom: 100px;
+  }
 
-    .react-container {
-      padding: 20px;
-      margin: 0;
-    }
+  .react-container {
+  padding: 20px;
+  margin: 0;
+  }
 
-    .react-title {
-      font-size: 24px;
-      margin-top: 100px;
-      margin-bottom: 100px;
-    }
+  .react-title {
+  font-size: 24px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  }
 
-    .react-list {
-      gap: 24px;
-    }
+  .react-list {
+  gap: 24px;
+  }
 
-    .react-card {
-      flex-direction: column;
-      height: auto;
-    }
+  .react-card {
+  flex-direction: column;
+  height: auto;
+  }
 
-    .react-image-section {
-      width: 100%;
-      height: 300px;
-    }
+  .react-image-section {
+  width: 100%;
+  height: 300px;
+  }
 
-    .react-content {
-      width: 100%;
-      padding: 20px;
-    }
+  .react-content {
+  width: 100%;
+  padding: 20px;
+  }
 
-    .react-header {
-      margin-bottom: 20px;
-    }
+  .react-header {
+  margin-bottom: 20px;
+  }
 
-    .react-date {
-      font-size: 12px;
-    }
+  .react-date {
+  font-size: 12px;
+  }
 
-    .react-card-title {
-      font-size: 18px;
-      margin-top: 6px;
-    }
+  .react-card-title {
+  font-size: 18px;
+  margin-top: 6px;
+  }
 
-    .language-section {
-      margin-bottom: 20px;
-    }
+  .language-section {
+  margin-bottom: 20px;
+  }
 
-    .language-title {
-      font-size: 13px;
-      margin-bottom: 15px;
-    }
+  .language-title {
+  font-size: 13px;
+  margin-bottom: 15px;
+  }
 
-    .language-bar {
-      height: 6px;
-    }
+  .language-bar {
+  height: 6px;
+  }
 
-    .language-labels {
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 11px;
-    }
+  .language-labels {
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 11px;
+  }
 
-    .react-link {
-      font-size: 13px;
-      padding: 10px 0;
-    }
+  .react-link {
+  font-size: 13px;
+  padding: 10px 0;
+  }
 
-    .react-arrow {
-      width: 16px;
-      height: 16px;
-    }
+  .react-arrow {
+  width: 16px;
+  height: 16px;
+  }
   }
 
   /* 작은 모바일 화면 */
   @media (max-width: 480px) {
-    .react-wrapper {
-      padding-bottom: 180px;
-      padding-top: 40px;
-    }
-
-    .react-container {
-      padding: 20px;
-    }
-
-    .react-title {
-      font-size: 18px;
-      margin-bottom: 60px;
-    }
-
-    .react-list {
-      gap: 40px;
-    }
-
-    .react-image-section {
-      height: 200px;
-    }
-
-    .react-content {
-      padding: 15px;
-    }
-
-    .react-card-title {
-      font-size: 16px;
-    }
-
-    .language-section {
-      margin-bottom: 18px;
-    }
-
-    .language-title {
-      font-size: 12px;
-      margin-bottom: 12px;
-    }
-
-    .language-labels {
-      gap: 8px;
-      font-size: 12px;
-    }
-
-    /* 반응형에서의 Vandi 로고 크기 조정 */
-    .vandi-logo {
-      width: 72px;
-      height: 72px;
-    }
-
-    .language-labels {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 6px;
-    }
-
-    .js-label,
-    .css-label,
-    .html-label {
-      white-space: nowrap;
-    }
+  .react-wrapper {
+  padding-bottom: 30px;
   }
 
-  /* 가로 모드 */
+  .react-container {
+  padding: 15px;
+  }
+
+  .react-title {
+  font-size: 18px;
+  margin-bottom: 30px;
+  }
+
+  .react-list {
+  gap: 20px;
+  }
+
+  .react-image-section {
+  height: 180px;
+  }
+
+  .react-content {
+  padding: 15px;
+  }
+
+  .react-card-title {
+  font-size: 16px;
+  }
+
+  .language-section {
+  margin-bottom: 15px;
+  }
+
+  .language-title {
+  font-size: 12px;
+  margin-bottom: 12px;
+  }
+
+  .language-labels {
+  gap: 8px;
+  font-size: 10px;
+  }
+
+  /* 반응형에서의 Vandi 로고 크기 조정 */
+  .vandi-logo {
+  width: 72px;
+  height: 72px;
+  }
+
+  /* 언어 바 레이블 조정 */
+  .language-labels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  }
+
+  .js-label, .css-label, .html-label {
+  white-space: nowrap;
+  }
+  }
+
+  /* 가로 모드 모바일 최적화 */
   @media (max-height: 480px) and (orientation: landscape) {
-    .react-wrapper {
-      padding: 20px 0;
-    }
-
-    .react-card {
-      flex-direction: row;
-      height: 200px;
-    }
-
-    .react-image-section {
-      width: 50%;
-      height: 100%;
-    }
-
-    .react-content {
-      width: 50%;
-    }
-
-    .language-labels {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+  .react-wrapper {
+  padding: 20px 0;
   }
 
-  /* 터치 */
+  .react-card {
+  flex-direction: row;
+  height: 200px;
+  }
+
+  .react-image-section {
+  width: 50%;
+  height: 100%;
+  }
+
+  .react-content {
+  width: 50%;
+  }
+
+  .language-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  }
+  }
+
+  /* 터치 디바이스 최적화 */
   @media (hover: none) {
-    .react-card {
-      transform: none !important;
-    }
+  .react-card {
+  transform: none !important;
+  }
 
-    .react-link {
-      padding: 12px 0;
-    }
+  .react-link {
+  padding: 12px 0;
+  }
 
-    .react-link:active {
-      opacity: 0.7;
-    }
+  .react-link:active {
+  opacity: 0.7;
+  }
 
-    .react-arrow {
-      transition: none;
-    }
+  .react-arrow {
+  transition: none;
+  }
   }

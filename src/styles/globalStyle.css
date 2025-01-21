@@ -1,87 +1,71 @@
   /* Globalstyles.css */
   @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/Montserrat-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
   }
 
   @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/Montserrat-SemiBold.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
   }
 
   @font-face {
-    font-family: 'The Chairman';
-    src: url('../assets/fonts/TheChairman.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'The Chairman';
+  src: url('../assets/fonts/TheChairman.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
   }
 
   @font-face {
-    font-family: 'Poppins';
-    src: url('../assets/fonts/Poppins-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
   }
 
   @font-face {
-    font-family: 'Poppins';
-    src: url('../assets/fonts/Pretendard-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Pretendard-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
   }
 
   @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/Pretendard-Bold.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Pretendard-Bold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
   }
 
   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   }
 
   body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #000;
-    color: #fff;
-    line-height: 1.2;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000;
+  color: #fff;
+  line-height: 1.2;
   }
 
   .nav-link {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
   }
 
   .nav-link-semibold {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-  }
-
-  img {
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
-    pointer-events: auto !important;
-  }
-
-  *::selection {
-    background: transparent;
-  }
-
-  *::-moz-selection {
-    background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
   }
