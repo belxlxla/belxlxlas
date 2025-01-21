@@ -1,473 +1,458 @@
   /* Proposal.css */
   .proposal-container {
-    width: 100%;
-    height: 1300px;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+  width: 100%;
+  height: 1300px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
   }
 
   .proposal-content {
-    width: 900px;
+  width: 900px;
   }
 
   .proposal-title {
-    font-size: 24px;
-    margin-bottom: 100px;
-    font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 100px;
+  font-weight: 600;
   }
 
   .proposal-title span {
-    color: #fff;
-    font-weight: 300;
+  color: #fff;
+  font-weight: 300;
   }
 
   .proposal-form-row {
-    display: flex;
-    gap: 44px;
-    margin-bottom: 34px;
+  display: flex;
+  gap: 44px;
+  margin-bottom: 34px;
   }
 
   .proposal-form-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   }
 
   .proposal-label {
-    font-size: 12px;
-    margin-bottom: 24px;
-    color: #fff;
+  font-size: 12px;
+  margin-bottom: 24px;
+  color: #fff;
   }
 
-  .proposal-input,
-  .proposal-textarea {
-    font-family: 'Montserrat', sans-serif;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #333;
-    padding: 24px 0;
-    padding-left: 12px;
-    padding-top: 12px;
-    color: #fff;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-    -webkit-ime-mode: active;
-    ime-mode: active;
+  .proposal-input, .proposal-textarea {
+  font-family: 'Montserrat', sans-serif;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  padding: 24px 0;
+  padding-left: 12px;
+  padding-top: 12px;
+  color: #fff;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
   }
 
-  .proposal-input:focus,
-  .proposal-textarea:focus {
-    outline: none;
-    border-color: #fff;
+  .proposal-input:focus, .proposal-textarea:focus {
+  outline: none;
+  border-color: #fff;
   }
 
-  .proposal-input::placeholder,
-  .proposal-textarea::placeholder {
-    color: #7D7D7D;
+  .proposal-input::placeholder, .proposal-textarea::placeholder {
+  color: #7D7D7D;
   }
 
   .proposal-textarea {
-    height: 280px;
-    resize: none;
-    margin-bottom: 40px;
-    background-color: #161515;
-    overflow-y: auto;
-    overflow-x: hidden;
+  height: 280px;
+  resize: none;
+  margin-bottom: 40px;
+  background-color: #161515;
+  overflow-y: auto;
+  overflow-x: hidden; 
   }
 
   .proposal-dropdown {
-    position: relative;
-    cursor: pointer;
+  position: relative;
+  cursor: pointer;
   }
 
   .proposal-dropdown-header {
-    border-bottom: 1px solid #333;
-    padding: 18px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #666;
+  border-bottom: 1px solid #333;
+  padding: 18px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #666;
   }
 
   .proposal-dropdown-icon {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
   }
 
   .proposal-dropdown:hover .proposal-dropdown-header {
-    border-color: #fff;
+  border-color: #fff;
   }
 
   .proposal-dropdown-content {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #1a1a1a;
-    margin-top: 8px;
-    z-index: 10;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #1a1a1a;
+  margin-top: 8px;
+  z-index: 10;
   }
 
   .proposal-dropdown-item {
-    padding: 18px 16px;
-    transition: background-color 0.3s ease;
+  padding: 18px 16px;
+  transition: background-color 0.3s ease;
   }
 
   .proposal-dropdown-item:hover {
-    background-color: #333;
+  background-color: #333;
   }
 
   .proposal-submit {
-    font-family: 'Montserrat', sans-serif;
-    width: 100%;
-    padding: 16px;
-    background-color: #222;
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  padding: 16px;
+  background-color: #222;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   }
 
   .proposal-submit:hover {
-    background-color: #FF4CA0;
+  background-color: #FF4CA0;
   }
 
   .proposal-email-group {
-    flex: 2;
+  flex: 2;
   }
 
   .proposal-domain-group {
-    flex: 1;
+  flex: 1;
   }
 
   .proposal-alert-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    animation: fadeIn 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
   }
 
   .proposal-alert {
-    background-color: #1a1a1a;
-    opacity: 0.9;
-    padding: 40px;
-    width: 400px;
-    position: relative;
-    text-align: center;
-    animation: slideIn 0.3s ease;
-    box-shadow: 0 4px 24px #000;
+  background-color: #1a1a1a;
+  opacity: 0.9;
+  padding: 40px;
+  width: 400px;
+  position: relative;
+  text-align: center;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 4px 24px #000;
   }
 
   .proposal-alert-confirm {
-    background-color: #222222;
-    color: #fff;
-    border: none;
-    padding: 12px 40px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  background-color: #222222;
+  color: #fff;
+  border: none;
+  padding: 12px 40px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
   }
 
   .proposal-alert-confirm:hover {
-    background-color: #FF4CA0;
+  background-color: #FF4CA0;
   }
 
   .proposal-alert-error {
-    border-top: 1px solid #FF4C4C;
+  border-top: 1px solid #FF4C4C;
   }
 
   .proposal-alert-confirm-error {
-    background-color: #222222;
+  background-color: #222222;
   }
 
   .proposal-alert-confirm-error:hover {
-    background-color: #FF4C4C;
+  background-color: #FF4C4C;
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
+  from {
+  opacity: 0;
+  }
+  to {
+  opacity: 1;
+  }
   }
 
   @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  from {
+  opacity: 0;
+  transform: translateY(-20px);
+  }
+  to {
+  opacity: 1;
+  transform: translateY(0);
+  }
   }
 
   .proposal-alert h2 {
-    font-size: 24px;
-    margin-bottom: 16px;
-    color: #fff;
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #fff;
   }
 
   .proposal-alert p {
-    color: #fff;
-    margin-bottom: 24px;
+  color: #fff;
+  margin-bottom: 24px;
   }
 
   .proposal-alert-close {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    background: none;
-    border: none;
-    color: #666;
-    cursor: pointer;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.3s ease-in-out;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease-in-out;
   }
 
   .proposal-alert-close:hover {
-    color: #fff;
+  color: #fff;
   }
 
   .proposal-alert-confirm {
-    background-color: #222222;
-    color: #fff;
-    border: none;
-    padding: 12px 40px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+  background-color: #222222;
+  color: #fff;
+  border: none;
+  padding: 12px 40px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
   }
 
   /* Webkit 브라우저 스크롤바 스타일링 */
   .proposal-textarea::-webkit-scrollbar {
-    width: 2px !important;
-    background-color: #161515 !important;
+  width: 2px !important;
+  background-color: #161515 !important;
   }
 
   .proposal-textarea::-webkit-scrollbar-track {
-    background: #161515 !important;
+  background: #161515 !important;
   }
 
   .proposal-textarea::-webkit-scrollbar-thumb {
-    background: #FF4CA0 !important;
+  background: #FF4CA0 !important;
   }
 
   .proposal-textarea {
-    scrollbar-width: thin;
-    scrollbar-color: #FF4CA0 #161515;
+  scrollbar-width: thin;
+  scrollbar-color: #FF4CA0 #161515;
   }
 
   .proposal-textarea {
-    -ms-overflow-style: auto;
+  -ms-overflow-style: auto;
   }
 
 
   /* bella : 모바일 */
   @media (max-width: 1024px) {
-    .proposal-container {
-      height: auto;
-      padding: 60px 20px;
-    }
+  .proposal-container {
+  height: auto;
+  padding: 60px 20px;
+  }
 
-    .proposal-content {
-      width: 100%;
-      max-width: 700px;
-    }
+  .proposal-content {
+  width: 100%;
+  max-width: 700px;
+  }
 
-    .proposal-title {
-      margin-bottom: 60px;
-    }
+  .proposal-title {
+  margin-bottom: 60px;
+  }
   }
 
   @media (max-width: 768px) {
-    .proposal-container {
-      padding: 100px 40px;
-    }
+  .proposal-container {
+  padding: 100px 40px;
+  }
 
-    .proposal-title {
-      font-size: 24px;
-      margin-bottom: 40px;
-      text-align: center;
-    }
+  .proposal-title {
+  font-size: 24px;
+  margin-bottom: 40px;
+  text-align: center;
+  }
 
-    .proposal-form-row {
-      flex-direction: column;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
+  .proposal-form-row {
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+  }
 
-    .proposal-label {
-      font-size: 12px;
-      margin-bottom: 18px;
-    }
+  .proposal-label {
+  font-size: 12px;
+  margin-bottom: 18px;
+  }
 
-    .proposal-input,
-    .proposal-textarea {
-      font-size: 16px;
-      padding: 16px 0;
-      padding-left: 8px;
-      -webkit-ime-mode: active;
-      ime-mode: active;
-    }
+  .proposal-input, .proposal-textarea {
+  font-size: 16px;
+  padding: 16px 0;
+  padding-left: 8px;
+  }
 
-    .proposal-email-group {
-      flex: 1;
-    }
+  .proposal-email-group {
+  flex: 1;
+  }
 
-    .proposal-domain-group {
-      flex: 1;
-    }
+  .proposal-domain-group {
+  flex: 1;
+  }
 
-    .proposal-textarea {
-      height: 200px;
-      margin-bottom: 30px;
-    }
+  .proposal-textarea {
+  height: 200px;
+  margin-bottom: 30px;
+  }
 
-    .proposal-dropdown-header {
-      padding: 14px 0;
-      font-size: 16px;
-    }
+  .proposal-dropdown-header {
+  padding: 14px 0;
+  font-size: 16px;
+  }
 
-    .proposal-dropdown-content {
-      margin-top: 4px;
-    }
+  .proposal-dropdown-content {
+  margin-top: 4px;
+  }
 
-    .proposal-dropdown-item {
-      padding: 14px 12px;
-      font-size: 16px;
-    }
+  .proposal-dropdown-item {
+  padding: 14px 12px;
+  font-size: 16px;
+  }
 
-    .proposal-submit {
-      padding: 14px;
-      font-size: 16px;
-    }
+  .proposal-submit {
+  padding: 14px;
+  font-size: 16px;
+  }
 
-    .proposal-alert {
-      width: 90%;
-      max-width: 320px;
-      padding: 30px 20px;
-    }
+  .proposal-alert {
+  width: 90%;
+  max-width: 320px;
+  padding: 30px 20px;
+  }
 
-    .proposal-alert h2 {
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
+  .proposal-alert h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  }
 
-    .proposal-alert p {
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
+  .proposal-alert p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  }
 
-    .proposal-alert-confirm {
-      padding: 10px 30px;
-      font-size: 14px;
-    }
+  .proposal-alert-confirm {
+  padding: 10px 30px;
+  font-size: 14px;
+  }
 
-    .proposal-alert-close {
-      top: 12px;
-      right: 12px;
-    }
+  .proposal-alert-close {
+  top: 12px;
+  right: 12px;
+  }
   }
 
   @media (max-width: 480px) {
-    .proposal-container {
-      padding: 160px 15px;
-    }
+  .proposal-container {
+  padding: 30px 15px;
+  }
 
-    .proposal-title {
-      font-size: 18px;
-      margin-bottom: 120px;
-    }
+  .proposal-title {
+  font-size: 18px;
+  margin-bottom: 30px;
+  }
 
-    .proposal-form-row {
-      gap: 34px;
-      margin-bottom: 16px;
-    }
+  .proposal-form-row {
+  gap: 16px;
+  margin-bottom: 16px;
+  }
 
-    .proposal-label {
-      font-size: 12px;
-      margin-bottom: 12px;
-    }
+  .proposal-label {
+  font-size: 10px;
+  margin-bottom: 12px;
+  }
 
-    .proposal-input,
-    .proposal-textarea {
-      font-size: 14px;
-      padding: 14px 0;
-      padding-left: 6px;
-      -webkit-ime-mode: active;
-      ime-mode: active;
-    }
+  .proposal-input, .proposal-textarea {
+  font-size: 13px;
+  padding: 14px 0;
+  padding-left: 6px;
+  }
 
-    .proposal-dropdown-header {
-      padding: 12px 0;
-      font-size: 14px;
-    }
+  .proposal-dropdown-header {
+  padding: 12px 0;
+  font-size: 13px;
+  }
 
-    .proposal-dropdown-item {
-      padding: 12px 10px;
-      font-size: 14px;
-    }
+  .proposal-dropdown-item {
+  padding: 12px 10px;
+  font-size: 13px;
+  }
 
-    .proposal-submit {
-      padding: 12px;
-      font-size: 14px;
-    }
+  .proposal-submit {
+  padding: 12px;
+  font-size: 14px;
+  }
 
-    .proposal-textarea::-webkit-scrollbar {
-      width: 1px !important;
-    }
+  .proposal-textarea::-webkit-scrollbar {
+  width: 1px !important;
+  }
   }
 
   @media (max-height: 480px) and (orientation: landscape) {
-    .proposal-container {
-      padding: 20px;
-    }
+  .proposal-container {
+  padding: 20px;
+  }
 
-    .proposal-form-row {
-      flex-direction: row;
-      gap: 16px;
-    }
+  .proposal-form-row {
+  flex-direction: row;
+  gap: 16px;
+  }
 
-    .proposal-textarea {
-      height: 120px;
-    }
+  .proposal-textarea {
+  height: 120px;
+  }
   }
 
   @media (hover: none) {
-    .proposal-dropdown-item:active {
-      background-color: #444;
-    }
+  .proposal-dropdown-item:active {
+  background-color: #444;
+  }
 
-    .proposal-submit:active {
-      background-color: #FF4CA0;
-    }
+  .proposal-submit:active {
+  background-color: #FF4CA0;
+  }
 
-    .proposal-input,
-    .proposal-textarea,
-    .proposal-dropdown,
-    .proposal-submit {
-      -webkit-tap-highlight-color: transparent;
-      -webkit-ime-mode: active;
-      ime-mode: active;
-    }
+  .proposal-input,
+  .proposal-textarea,
+  .proposal-dropdown,
+  .proposal-submit {
+  -webkit-tap-highlight-color: transparent;
+  }
   }
