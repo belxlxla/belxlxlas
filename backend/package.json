@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "Backend service for the application",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.21.2",
     "nodemailer": "^6.9.16"
