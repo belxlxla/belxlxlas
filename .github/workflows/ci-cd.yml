@@ -59,7 +59,7 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: |
           docker push kyle0321a/belxlxlas:latest
-          docker push kyle0321a/belxlxlas:${{ github.run_number  }}
+          docker push kyle0321a/belxlxlas:${{ github.sha }}
 
       # 8. AWS 서버에 배포
       - name: Deploy to AWS
