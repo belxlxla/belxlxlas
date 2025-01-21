@@ -189,8 +189,6 @@ const sendEmail = async (formData, selectedDomain) => {
       }),
     });
 
-    console.log("보낸 데이터:", { ...formData, completeEmail });
-
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       console.error("이메일 전송 실패:", errorData);
