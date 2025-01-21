@@ -1,5 +1,5 @@
 // Design.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/design.css';
 import arrow1 from '../assets/arrow1.svg';
 import arrow2 from '../assets/arrow2.svg';
@@ -11,17 +11,15 @@ import designImg4 from '../assets/design4.svg';
 const Design = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
 
-  const designs = [
+  const designs = [ // bella : 프로젝트 추가 부분
     {
       id: 1,
       image: designImg1,
       category: 'Design > Creative > CI,BI',
       title: 'oa Brand logo design',
       subtitle: '(주)오아 브랜드 로고 디자인',
-      description: `'발견' 과 '발명' 을 통해 단순한 제품이 아닌 생활가치를 제공하며\n소소비자가 필요한 기능과 서비스를 찾아 담아내는 합리적인 브랜드\n오아의 공식 브랜드 BI 를 디자인 하였습니다.\n\n2015년에 디자인하여 현재까지도 사용자들에게 많은 사랑을\n받고 있는 생활가전 브랜드로 자리매김 하고 있습니다.`,
+      description: `‘발견’ 과 ‘발명' 을 통해 단순한 제품이 아닌 생활가치를 제공하며\n소소비자가 필요한 기능과 서비스를 찾아 담아내는 합리적인 브랜드\n오아의 공식 브랜드 BI 를 디자인 하였습니다.\n\n2015년에 디자인하여 현재까지도 사용자들에게 많은 사랑을\n받고 있는 생활가전 브랜드로 자리매김 하고 있습니다.`,
       stacks: ['Creativity', 'Multiple interpretations', 'Reference', 'Flexible thinking', 'Planning', 'Color sense']
     },
     {
@@ -50,33 +48,9 @@ const Design = () => {
       subtitle: '요토요타 어플리케이션 디자인 총괄',
       description: `웹앱으로 개발된 요토요타 어플리케이션 디자인 유지보수 총괄로\n현재도 디자인 추가사항이나 신차 출시 시 신차 디자인 추가,\n이벤트 및 프로모션, 공지사항 페이지 추가 등\n어플리케이션의 디자인 유지보수 총괄을 맡고 있습니다.\n\n현재도 디자인을 맡아 진행하고 있으며,\nAOS/iOS 앱 내 모든 디자인 작업 기여도 100% 입니다.`,
       stacks: ['Maintaining corporate tone and manner', 'Optimized UX', 'Clean and crisp design']
-    }
+    },
+    // bella : 하단에 복사하여 추가
   ];
-
-  const minSwipeDistance = 50;
-
-  const onTouchStart = (e) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe && !animating) {
-      handleNextSlide();
-    } else if (isRightSwipe && !animating) {
-      handlePrevSlide();
-    }
-  };
 
   const handlePrevSlide = () => {
     if (animating) return;
@@ -92,43 +66,11 @@ const Design = () => {
     setTimeout(() => setAnimating(false), 1000);
   };
 
-  useEffect(() => {
-    const preventDefaultTouchBehavior = (e) => {
-      const target = e.target;
-      if (target.tagName === 'IMG') {
-        e.preventDefault();
-      }
-    };
-
-    document.addEventListener('touchstart', preventDefaultTouchBehavior, { passive: false });
-    return () => {
-      document.removeEventListener('touchstart', preventDefaultTouchBehavior);
-    };
-  }, []);
-
-  useEffect(() => {
-    const initializeLayout = () => {
-      const container = document.querySelector('.slides-container');
-      if (container) {
-        container.style.height = 'auto';
-      }
-    };
-
-    initializeLayout();
-    window.addEventListener('resize', initializeLayout);
-
-    return () => window.removeEventListener('resize', initializeLayout);
-  }, []);
-
   return (
     <section className="design">
       <h1>Design</h1>
 
-      <div className="design-slider"
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
+      <div className="design-slider">
         <button
           className={`nav-button prev ${animating ? 'disabled' : ''}`}
           onClick={handlePrevSlide}

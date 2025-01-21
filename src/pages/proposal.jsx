@@ -1,6 +1,6 @@
 // Proposal.jsx
-import React, { useState, useCallback } from 'react';
-import '../styles/proposal.css';
+import React, { useState, useCallback } from "react";
+import "../styles/proposal.css";
 
 const ChevronDownIcon = () => (
   <svg
@@ -143,7 +143,7 @@ const generateEmailTemplate = (formData, selectedDomain) => {
           <div class="message-box">
             <div class="message-label">Message</div>
             <div class="message-content">
-              ${formData.message.replace(/\n/g, '<br>')}
+              ${formData.message.replace(/\n/g, "<br>")}
             </div>
           </div>
         </div>
@@ -157,128 +157,153 @@ const generateEmailTemplate = (formData, selectedDomain) => {
   `;
 };
 
+// 이메일 발송 함수
 const sendEmail = async (formData, selectedDomain) => {
-  const emailTemplate = generateEmailTemplate(formData, selectedDomain);
-  const completeEmail = `${formData.email}@${formData.domain || selectedDomain}`;
+  const completeEmail = formData.email.includes("@")
+    ? formData.email
+    : formData.domain || selectedDomain
+      ? `${formData.email}@${formData.domain || selectedDomain}`
+      : null;
 
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+  if (!completeEmail || !completeEmail.includes("@")) {
+    console.error("Invalid email or domain:", {
+      email: formData.email,
+      domain: formData.domain || selectedDomain,
+    });
+    return false;
+  }
+
+  const emailHtml = generateEmailTemplate(formData, selectedDomain);
+
+  const API_URL = process.env.REACT_APP_API_URL || "https://www.belxlxla.com";
 
   try {
     const response = await fetch(`${API_URL}/api/send-email`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        to: completeEmail,
-        subject: 'Job & Project Proposal Confirmation',
-        html: emailTemplate,
-        formData: {
-          ...formData,
-          completeEmail
-        }
+        formData: { ...formData, completeEmail },
+        template: emailHtml,
       }),
     });
 
+    console.log("보낸 데이터:", { ...formData, completeEmail });
+
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      console.error('Email sending failed:', errorData);
-      throw new Error(errorData.message || 'Failed to send email');
+      console.error("이메일 전송 실패:", errorData);
+      throw new Error(errorData.message || "이메일 전송에 실패했습니다.");
     }
 
     return true;
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error("이메일 전송 중 오류 발생:", error);
     return false;
   }
 };
 
 const Proposal = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedDomain, setSelectedDomain] = useState('');
+  const [selectedDomain, setSelectedDomain] = useState("");
   const [isDirectInput, setIsDirectInput] = useState(false);
   const [alertConfig, setAlertConfig] = useState({
     show: false,
-    type: 'success',
-    title: '',
-    message: ''
+    type: "success",
+    title: "",
+    message: "",
   });
 
   const [formData, setFormData] = useState({
-    nameCompany: '',
-    contact: '',
-    email: '',
-    domain: '',
-    message: ''
+    nameCompany: "",
+    contact: "",
+    email: "",
+    domain: "",
+    message: "",
   });
 
   const domains = [
-    'gmail.com',
-    'naver.com',
-    'kakao.com',
-    'outlook.com',
-    'yahoo.com',
-    '직접 입력하기'
+    "gmail.com",
+    "naver.com",
+    "kakao.com",
+    "outlook.com",
+    "yahoo.com",
+    "직접 입력하기",
   ];
 
   const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   }, []);
 
   const handleCompositionEnd = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   }, []);
 
   const resetForm = () => {
     setFormData({
-      nameCompany: '',
-      contact: '',
-      email: '',
-      domain: '',
-      message: ''
+      nameCompany: "",
+      contact: "",
+      email: "",
+      domain: "",
+      message: "",
     });
-    setSelectedDomain('');
+    setSelectedDomain("");
     setIsDirectInput(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // 유효성 검사
+    if (!formData.email || (!formData.domain && !selectedDomain)) {
+      alert("이메일 또는 도메인이 올바르지 않습니다.");
+      return;
+    }
+
     const emailSent = await sendEmail(formData, selectedDomain);
 
     if (emailSent) {
       setAlertConfig({
-        type: 'success',
+        type: "success",
         show: true,
-        title: 'Thank you!',
-        message: '정상적으로 전송되었습니다.'
+        title: "Thank you!",
+        message: "정상적으로 전송되었습니다.",
       });
       resetForm();
     } else {
       setAlertConfig({
-        type: 'error',
+        type: "error",
         show: true,
-        title: 'Error',
-        message: '메일 전송에 실패했습니다. 다시 시도해 주세요.'
+        title: "Error",
+        message: "메일 전송에 실패했습니다. 다시 시도해 주세요.",
       });
     }
   };
 
   const handleDomainSelect = (domain) => {
-    if (domain === '직접 입력하기') {
+    if (domain === "직접 입력하기") {
       setIsDirectInput(true);
-      setSelectedDomain('');
+      setSelectedDomain("");
+      setFormData((prev) => ({
+        ...prev,
+        domain: "",
+      }));
     } else {
       setIsDirectInput(false);
       setSelectedDomain(domain);
+      setFormData((prev) => ({
+        ...prev,
+        domain,
+      }));
     }
     setIsDropdownOpen(false);
   };
@@ -286,7 +311,9 @@ const Proposal = () => {
   return (
     <div className="proposal-container">
       <div className="proposal-content">
-        <h1 className="proposal-title">Job & Project <span>Proposals</span></h1>
+        <h1 className="proposal-title">
+          Job & Project <span>Proposals</span>
+        </h1>
 
         <form className="proposal-form" onSubmit={handleSubmit}>
           <div className="proposal-form-row">
@@ -347,7 +374,7 @@ const Proposal = () => {
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 >
                   <div className="proposal-dropdown-header">
-                    <span>{selectedDomain || '도메인 선택'}</span>
+                    <span>{selectedDomain || "도메인 선택"}</span>
                     <ChevronDownIcon />
                   </div>
                   {isDropdownOpen && (
@@ -384,24 +411,36 @@ const Proposal = () => {
             />
           </div>
 
-          <button className="proposal-submit" type="submit">Submit</button>
+          <button className="proposal-submit" type="submit">
+            Submit
+          </button>
         </form>
       </div>
 
       {alertConfig.show && (
         <div className="proposal-alert-overlay">
-          <div className={`proposal-alert ${alertConfig.type === 'error' ? 'proposal-alert-error' : ''}`}>
+          <div
+            className={`proposal-alert ${alertConfig.type === "error" ? "proposal-alert-error" : ""
+              }`}
+          >
             <button
               className="proposal-alert-close"
-              onClick={() => setAlertConfig(prev => ({ ...prev, show: false }))}
+              onClick={() =>
+                setAlertConfig((prev) => ({ ...prev, show: false }))
+              }
             >
               <CloseIcon />
             </button>
             <h2>{alertConfig.title}</h2>
             <p>{alertConfig.message}</p>
             <button
-              className={`proposal-alert-confirm ${alertConfig.type === 'error' ? 'proposal-alert-confirm-error' : ''}`}
-              onClick={() => setAlertConfig(prev => ({ ...prev, show: false }))}
+              className={`proposal-alert-confirm ${alertConfig.type === "error"
+                  ? "proposal-alert-confirm-error"
+                  : ""
+                }`}
+              onClick={() =>
+                setAlertConfig((prev) => ({ ...prev, show: false }))
+              }
             >
               확인
             </button>

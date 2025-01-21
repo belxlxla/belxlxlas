@@ -36,7 +36,7 @@ const MainContent = () => (
 
 const App = () => {
   useEffect(() => {
-    // 채널톡 초기화 되는 기능
+    // 채널톡 초기화
     ChannelService.loadScript();
     ChannelService.boot({
       pluginKey: CHANNEL_PLUGIN_KEY
@@ -48,38 +48,15 @@ const App = () => {
       return false;
     };
 
-    // 모바일에서 롱프레스 방지
-    const preventLongPress = (e) => {
-      if (e.target.tagName === 'IMG') {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    };
-
-    const handleTouchStart = (e) => {
-      const touch = e.touches[0];
-      if (touch) {
-        const target = document.elementFromPoint(touch.clientX, touch.clientY);
-        if (target && target.tagName === 'IMG') {
-          e.preventDefault();
-        }
-      }
-    };
-
     document.addEventListener('contextmenu', preventImageDownload);
-    document.addEventListener('touchstart', preventLongPress, { passive: false });
-    document.addEventListener('touchstart', handleTouchStart, { passive: false });
     document.addEventListener('dragstart', preventImageDownload);
 
     const applyImageProtection = () => {
       const images = document.getElementsByTagName('img');
       Array.from(images).forEach(img => {
-        img.style.webkitTouchCallout = 'none';
-        img.style.userSelect = 'none';
         img.draggable = false;
         img.addEventListener('contextmenu', preventImageDownload);
         img.addEventListener('dragstart', preventImageDownload);
-        img.addEventListener('touchstart', preventLongPress, { passive: false });
       });
     };
 
@@ -93,8 +70,6 @@ const App = () => {
     return () => {
       ChannelService.shutdown();
       document.removeEventListener('contextmenu', preventImageDownload);
-      document.removeEventListener('touchstart', preventLongPress);
-      document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('dragstart', preventImageDownload);
       observer.disconnect();
 
@@ -102,24 +77,13 @@ const App = () => {
       Array.from(images).forEach(img => {
         img.removeEventListener('contextmenu', preventImageDownload);
         img.removeEventListener('dragstart', preventImageDownload);
-        img.removeEventListener('touchstart', preventLongPress);
       });
     };
   }, []);
 
   return (
     <BrowserRouter>
-      <div
-        className="min-h-screen bg-black"
-        style={{
-          WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none',
-          KhtmlUserSelect: 'none',
-          MozUserSelect: 'none',
-          msUserSelect: 'none',
-          userSelect: 'none'
-        }}
-      >
+      <div className="min-h-screen bg-black">
         <Header />
         <Routes>
           <Route path="/" element={<MainContent />} />
