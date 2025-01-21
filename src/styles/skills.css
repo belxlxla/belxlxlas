@@ -238,7 +238,7 @@
 
     .skills-title {
       font-size: 24px;
-      margin-bottom: 100px;
+      margin-bottom: 80px;
     }
 
     .skills-content {
@@ -303,12 +303,13 @@
 
   @media (max-width: 480px) {
     .skills {
-      padding: 40px 0;
+      padding: 120px 0 20px;
+      min-height: auto;
     }
 
     .skills-title {
       font-size: 18px;
-      margin-bottom: 40px;
+      margin-bottom: 80px;
     }
 
     .tools-row {
@@ -321,8 +322,8 @@
     }
 
     .skill-item img {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
     }
 
     .icon-gauge-bar {
@@ -331,7 +332,7 @@
 
     .skills-bars {
       gap: 15px;
-      margin-top: 40px;
+      margin-top: 80px;
     }
 
     .skill-name {

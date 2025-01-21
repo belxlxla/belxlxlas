@@ -179,7 +179,9 @@ const DesignWiki = () => {
         <div className="design-wiki">
             <div className="wiki-content">
                 <div className="wiki-title-wrapper">
-                    <h1 className="wiki"><b>Design</b>Wiki</h1>
+                    <h1 className="wiki">
+                        <b>Design</b>Wiki
+                    </h1>
                 </div>
                 <div className="wiki-list">
                     {wikiItems.map((item, index) => (
@@ -209,11 +211,11 @@ const DesignWiki = () => {
                                 </button>
                             </div>
                             <div className="wiki-body">
-                                <p>{item.content}</p>
+                                <div className="wiki-text">{item.content}</div>
                                 {item.image && (
                                     <>
                                         <img src={item.image} alt="content" className="content-image" />
-                                        {item.afterImageContent && <p className="after-image-text">{item.afterImageContent}</p>}
+                                        <div className="after-image-text">{item.afterImageContent}</div>
                                     </>
                                 )}
                             </div>
@@ -223,6 +225,6 @@ const DesignWiki = () => {
             </div>
         </div>
     );
-};
+}
 
 export default DesignWiki;

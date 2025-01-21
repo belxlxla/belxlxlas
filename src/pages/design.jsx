@@ -53,7 +53,6 @@ const Design = () => {
     }
   ];
 
-  // 스와이프 감지를 위한 최소 거리
   const minSwipeDistance = 50;
 
   const onTouchStart = (e) => {
@@ -96,7 +95,6 @@ const Design = () => {
   useEffect(() => {
     const preventDefaultTouchBehavior = (e) => {
       const target = e.target;
-      // 이미지나 특정 요소에만 preventDefault 적용
       if (target.tagName === 'IMG') {
         e.preventDefault();
       }
@@ -106,6 +104,20 @@ const Design = () => {
     return () => {
       document.removeEventListener('touchstart', preventDefaultTouchBehavior);
     };
+  }, []);
+
+  useEffect(() => {
+    const initializeLayout = () => {
+      const container = document.querySelector('.slides-container');
+      if (container) {
+        container.style.height = 'auto';
+      }
+    };
+
+    initializeLayout();
+    window.addEventListener('resize', initializeLayout);
+
+    return () => window.removeEventListener('resize', initializeLayout);
   }, []);
 
   return (

@@ -263,6 +263,8 @@
 
     .banner-content {
       padding: 15px;
+      margin-bottom: 60px;
+      margin-top: 40px;
     }
 
     .git-icon {

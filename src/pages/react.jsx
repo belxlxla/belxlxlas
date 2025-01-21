@@ -9,7 +9,7 @@ import baNner3 from '../assets/banner3.svg';
 
 const ReactArea = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
-  
+
   const portfolioItems = [
     {
       id: 1,
@@ -51,16 +51,24 @@ const ReactArea = () => {
 
   return (
     <div className="react-wrapper">
-      <video className="react-video" autoPlay muted loop>
-        <source src={reactVideo} type="video/mp4" />
-      </video>
-      
+      <div className="video-background">
+        <video
+          className="react-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={reactVideo} type="video/mp4" />
+        </video>
+      </div>
+
       <div className="react-container">
         <h1 className="react-title">React</h1>
-        
+
         <div className="react-list">
           {portfolioItems.map((item, index) => (
-            <div 
+            <div
               key={item.id}
               className="react-card"
               onMouseEnter={() => setHoveredItem(item.id)}
@@ -78,47 +86,47 @@ const ReactArea = () => {
                 {index === 2 && (
                   <div className="vanish-title"></div>
                 )}
-                <img 
-                  src={item.image} 
+                <img
+                  src={item.image}
                   alt={item.title}
                   className="react-image"
                 />
               </div>
-              
+
               <div className="react-content">
                 <div className="react-header">
-                <span className="react-date">{item.date}</span>
-                    <h3 className="react-card-title">{item.title}</h3>
+                  <span className="react-date">{item.date}</span>
+                  <h3 className="react-card-title">{item.title}</h3>
                 </div>
 
                 <div className="language-section">
-                <p className="language-title">Language</p>
-                <div className="language-bar">
-                <div className="js-bar" style={{width: `${item.languages.javascript}%`}} />
-                <div className="css-bar" style={{width: `${item.languages.css}%`}} />
-                <div className="html-bar" style={{width: `${item.languages.html}%`}} />
-                </div>
-                <div className="language-labels">
-                <span className="js-label">Javascript {item.languages.javascript}%</span>
-                <span className="css-label">CSS {item.languages.css}%</span>
-                <span className="html-label">HTML {item.languages.html}%</span>
-                </div>
+                  <p className="language-title">Language</p>
+                  <div className="language-bar">
+                    <div className="js-bar" style={{ width: `${item.languages.javascript}%` }} />
+                    <div className="css-bar" style={{ width: `${item.languages.css}%` }} />
+                    <div className="html-bar" style={{ width: `${item.languages.html}%` }} />
+                  </div>
+                  <div className="language-labels">
+                    <span className="js-label">Javascript {item.languages.javascript}%</span>
+                    <span className="css-label">CSS {item.languages.css}%</span>
+                    <span className="html-label">HTML {item.languages.html}%</span>
+                  </div>
                 </div>
 
-                <a 
-                href={item.link}
-                className={`react-link ${hoveredItem === item.id ? 'hovered' : ''}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                <a
+                  href={item.link}
+                  className={`react-link ${hoveredItem === item.id ? 'hovered' : ''}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                Go to Website
-                <img 
-                src={arrRight} 
-                alt="arrow" 
-                className="react-arrow"
-                />
+                  Go to Website
+                  <img
+                    src={arrRight}
+                    alt="arrow"
+                    className="react-arrow"
+                  />
                 </a>
-                </div>
+              </div>
             </div>
           ))}
         </div>

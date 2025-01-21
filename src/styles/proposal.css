@@ -391,27 +391,27 @@
 
   @media (max-width: 480px) {
     .proposal-container {
-      padding: 120px 15px;
+      padding: 160px 15px;
     }
 
     .proposal-title {
       font-size: 18px;
-      margin-bottom: 80px;
+      margin-bottom: 120px;
     }
 
     .proposal-form-row {
-      gap: 16px;
+      gap: 34px;
       margin-bottom: 16px;
     }
 
     .proposal-label {
-      font-size: 10px;
+      font-size: 12px;
       margin-bottom: 12px;
     }
 
     .proposal-input,
     .proposal-textarea {
-      font-size: 13px;
+      font-size: 14px;
       padding: 14px 0;
       padding-left: 6px;
       -webkit-ime-mode: active;
@@ -420,12 +420,12 @@
 
     .proposal-dropdown-header {
       padding: 12px 0;
-      font-size: 13px;
+      font-size: 14px;
     }
 
     .proposal-dropdown-item {
       padding: 12px 10px;
-      font-size: 13px;
+      font-size: 14px;
     }
 
     .proposal-submit {

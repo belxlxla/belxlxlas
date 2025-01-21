@@ -195,50 +195,71 @@
     font-weight: 600;
   }
 
-  @media (max-width: 1024px) {
-    .design-slider {
-      height: auto;
-      min-height: 800px;
-      padding: 40px 0;
-    }
-
-    .nav-button.prev {
-      left: 20%;
-    }
-
-    .nav-button.next {
-      right: 20%;
-    }
-
-    .design-card {
-      padding-top: 60px;
-    }
-
-    .card-inner {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-  }
-
-  /* 모바일 반응형 */
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     .design {
       padding: 60px 0;
+      min-height: auto;
+      width: 100%;
     }
 
     .design h1 {
-      font-size: 20px;
-      margin-bottom: 40px;
+      font-size: 18px;
+      margin-bottom: 60px;
+      padding-bottom: 20px;
     }
 
     .design-slider {
+      width: 100%;
+      height: auto;
       min-height: 600px;
-      padding: 0;
+      padding: 20px;
+      margin: 0;
+      padding-top: 20px;
     }
 
     .slides-container {
-      width: 85%;
-      max-width: 400px;
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      min-height: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .design-card {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      padding-top: 0;
+      top: 0;
+      left: 0;
+    }
+
+    .design-card.active {
+      transform: translateX(0);
+      opacity: 1;
+      z-index: 2;
+      position: relative;
+    }
+
+    .design-card.prev,
+    .design-card.next {
+      transform: translateX(-100%);
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: auto;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .design-image {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
     }
 
     .nav-button {
@@ -247,223 +268,57 @@
     }
 
     .nav-button.prev {
-      left: 5%;
+      left: 5px;
     }
 
     .nav-button.next {
-      right: 5%;
+      right: 5px;
     }
 
     .nav-button img {
       width: 24px;
-      height: 46px;
+      height: 24px;
+    }
+  }
+
+  .design-card .scrollable-description {
+    -webkit-overflow-scrolling: touch;
+    max-height: 150px;
+  }
+
+  @media (max-width: 360px) {
+    .slides-container {
+      max-width: 280px;
     }
 
-    .design-card {
-      padding-top: 40px;
+    .design-image {
+      max-height: 180px;
     }
 
     .design-details {
-      padding: 20px;
+      padding: 12px;
+    }
+  }
+
+  @media (max-height: 480px) and (orientation: landscape) {
+    .slides-container {
+      width: 90%;
+      max-width: 440px;
     }
 
-    .design-category {
-      font-size: 12px;
-      margin-bottom: 8px;
+    .card-inner {
+      display: flex;
+      flex-direction: row;
     }
 
-    .design-title {
-      font-size: 20px;
-      margin-bottom: 8px;
+    .design-image {
+      width: 40%;
+      height: auto;
+      max-height: none;
     }
 
-    .design-subtitle {
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .design-description {
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .scrollable-description {
-      max-height: 120px;
-      margin: 15px 0;
-      padding-right: 15px;
-    }
-
-    .stacks-section {
-      margin-top: 15px;
-    }
-
-    .stacks-title {
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-
-    .stack-tags {
-      gap: 6px;
-    }
-
-    .stack-tag {
-      padding: 6px 12px;
-      font-size: 12px;
-    }
-
-    /* bella : 모바일 */
-    @media (max-width: 1440px) {
-      .design h1 {
-        margin-bottom: 40px;
-      }
-
-      .design-card {
-        padding-top: 0;
-      }
-
-      .nav-button.prev {
-        left: 20%;
-      }
-
-      .nav-button.next {
-        right: 20%;
-      }
-
-      .slides-container {
-        width: 500px;
-        height: auto;
-        padding: 20px 0;
-      }
-
-      .design-slider {
-        min-height: auto;
-        height: auto;
-        padding: 40px 0;
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .nav-button.prev {
-        left: 10%;
-      }
-
-      .nav-button.next {
-        right: 10%;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .design {
-        padding: 1px 0;
-      }
-
-      .design h1 {
-        font-size: 24px;
-        margin-bottom: 80px;
-      }
-
-      .design-slider {
-        padding: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-      }
-
-      .slides-container {
-        width: 380px;
-        height: 720px;
-        padding: 0;
-      }
-
-      .nav-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10;
-      }
-
-      .nav-button.prev {
-        left: 5%;
-      }
-
-      .nav-button.next {
-        right: 5%;
-      }
-
-      .nav-button img {
-        width: 24px;
-        height: 46px;
-      }
-
-      .design-card.prev {
-        transform: translateX(-130%);
-      }
-
-      .design-card.next {
-        transform: translateX(130%);
-      }
-
-      .design-details {
-        padding: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .design {
-        padding: 30px 0;
-      }
-
-      .design h1 {
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
-
-      .design-slider {
-        padding: 15px;
-      }
-
-      .slides-container {
-        width: 280px;
-      }
-
-      .nav-button.prev {
-        left: 2%;
-      }
-
-      .nav-button.next {
-        right: 2%;
-      }
-
-      .nav-button img {
-        width: 20px;
-        height: 40px;
-      }
-    }
-
-    @media (max-height: 480px) and (orientation: landscape) {
-      .design {
-        padding: 20px 0;
-      }
-
-      .design h1 {
-        margin-bottom: 15px;
-      }
-
-      .design-slider {
-        padding: 10px 20px;
-      }
-
-      .nav-button.prev {
-        left: 10%;
-      }
-
-      .nav-button.next {
-        right: 10%;
-      }
-
-      .slides-container {
-        padding: 10px 0;
-      }
+    .design-details {
+      width: 60%;
+      padding: 12px;
     }
   }
