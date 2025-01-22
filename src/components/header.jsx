@@ -88,37 +88,40 @@ const Header = () => {
         </motion.div>
 
         <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              className="mobile-menu"
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "tween" }}
-            >
-              <ul className="mobile-nav-links">
-                {visibleMenuItems.map((item, index) => (
-                  <motion.li 
-                    key={index}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.5 }}
-                    onClick={() => scrollToSection(item.to)}
-                    className="mobile-nav-item"
-                  >
-                    <span className={`nav-text ${item.textWeight ? `nav-text-${item.textWeight}` : ''}`}>
-                      {item.text}
-                    </span>
-                    {item.hasB && 
-                      <b className={`nav-bold ${item.bWeight ? `nav-bold-${item.bWeight}` : ''}`}>
-                        {item.bText}
-                      </b>
-                    }
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
+  {isMobileMenuOpen && (
+    <motion.div
+      className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
+      initial={{ x: "-100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-100%" }}
+      transition={{ 
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1]  // 이것은 cubic-bezier(0.16, 1, 0.3, 1)와 동일합니다
+      }}
+    >
+      <ul className="mobile-nav-links">
+        {visibleMenuItems.map((item, index) => (
+          <motion.li 
+            key={index}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.5 }}
+            onClick={() => scrollToSection(item.to)}
+            className="mobile-nav-item"
+          >
+            <span className={`nav-text ${item.textWeight ? `nav-text-${item.textWeight}` : ''}`}>
+              {item.text}
+            </span>
+            {item.hasB && 
+              <b className={`nav-bold ${item.bWeight ? `nav-bold-${item.bWeight}` : ''}`}>
+                {item.bText}
+              </b>
+            }
+          </motion.li>
+        ))}
+      </ul>
+    </motion.div>
+  )}
+</AnimatePresence>
 
         <ul className="nav-links desktop-nav">
           {visibleMenuItems.map((item, index) => (
