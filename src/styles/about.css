@@ -1,232 +1,232 @@
   /* About.css */
   .about-section {
-  width: 100%;
-  min-height: 1080px;
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-  padding: 120px 0;
-  overflow: hidden;
-  }
-
-  .about-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  will-change: transform;
-  transform: translateY(0);
-  transition: transform 0.1s ease-out; 
-  }
-
-  .about-header {
-  margin-bottom: 80px;
-  text-align: center;
-  position: relative;
-  }
-
-  .about-sub-title {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 300;
-  font-size: 24px;
-  color: #fff;
-  margin-bottom: 20px;
-  }
-
-  .about-text-bold {
-  font-weight: bold;
-  }
-
-  .about-text-light {
-  font-weight: 300;
-  }
-
-  .about-sub-description {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: bold;
-  font-size: 34px;
-  color: #fff;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 2;
-  }
-
-  .about-name-wrapper {
-  position: relative;
-  display: inline-block;
-  }
-
-  .about-name-img {
-  max-width: 540px;
-  opacity: 60%;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  }
-
-  .about-content {
-  display: flex;
-  gap: 80px;
-  align-items: flex-start;
-  }
-
-  .about-profile-image {
-  flex: 0 0 540px;
-  }
-
-  .about-profile-image img {
-  width: 100%;
-  height: auto;
-  }
-
-  .about-text-content {
-  flex: 1;
-  }
-
-  .about-intro {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: bold;
-  font-size: 16px;
-  color: #fff;
-  margin-bottom: 36px;
-  }
-
-  .about-description {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.3;
-  color: #fff;
-  margin-bottom: 30px;
-  }
-
-  .about-quote {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.3;
-  color: #fff;
-  margin-top: 50px;
-  }
-
-  .about-highlight {
-  color: #FF4CA0;
-  }
-
-  /* bella : 모바일 */
-  @media (max-width: 1024px) {
-  .about-container {
-  padding: 0 20px;
-  }
-
-  .about-content {
-  gap: 40px;
-  }
-
-  .about-profile-image {
-  flex: 0 0 400px;
-  }
-
-  .about-name-img {
-  max-width: 400px;
-  }
-  }
-
-  @media (max-width: 768px) {
-  .about-section {
-  padding: 80px 0;
-  min-height: auto;
-  }
-
-  .about-container {
-  padding: 0 60px;
-  }
-
-  .about-header {
-  margin-bottom: 40px;
-  }
-
-  .about-sub-title {
-  font-size: 18px;
-  margin-bottom: 15px;
-  word-break: keep-all;
-  }
-
-  .about-sub-description {
-  font-size: 24px;
-  margin-bottom: 15px;
-  }
-
-  .about-name-img {
-  max-width: 280px;
-  }
-
-  .about-content {
-  flex-direction: column;
-  gap: 40px;
-  }
-
-  .about-profile-image {
-  flex: none;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  }
-
-  .about-intro {
-  font-size: 16px;
-  margin-bottom: 24px;
-  word-break: keep-all;
-  }
-
-  .about-description {
-  font-size: 16px;
-  margin-bottom: 20px;
-  word-break: keep-all;
-  }
-
-  .about-description br {
-  display: none;
-  }
-
-  .about-quote {
-  font-size: 16px;
-  margin-top: 30px;
-  word-break: keep-all;
-  }
-
-  .about-quote br {
-  display: none;
-  }
-  }
-
-  @media (max-width: 480px) {
-  .about-section {
-  padding: 60px 0;
-  }
-
-  .about-sub-title {
-  font-size: 16px;
-  }
-
-  .about-sub-description {
-  font-size: 20px;
-  }
-
-  .about-name-img {
-  max-width: 240px;
-  }
-
-  .about-profile-image {
-  max-width: 320px;
-  }
-
-  .about-intro,
-  .about-description,
-  .about-quote {
-  font-size: 14px;
-  line-height: 1.5;
-  }
-  }
+    width: 100%;
+    min-height: 1080px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    padding: 120px 0;
+    overflow: hidden;
+    }
+  
+    .about-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    will-change: transform;
+    transform: translateY(0);
+    transition: transform 0.1s ease-out; 
+    }
+  
+    .about-header {
+    margin-bottom: 80px;
+    text-align: center;
+    position: relative;
+    }
+  
+    .about-sub-title {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+    }
+  
+    .about-text-bold {
+    font-weight: bold;
+    }
+  
+    .about-text-light {
+    font-weight: 300;
+    }
+  
+    .about-sub-description {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: bold;
+    font-size: 34px;
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    }
+  
+    .about-name-wrapper {
+    position: relative;
+    display: inline-block;
+    }
+  
+    .about-name-img {
+    max-width: 540px;
+    opacity: 60%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    }
+  
+    .about-content {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+    }
+  
+    .about-profile-image {
+    flex: 0 0 540px;
+    }
+  
+    .about-profile-image img {
+    width: 100%;
+    height: auto;
+    }
+  
+    .about-text-content {
+    flex: 1;
+    }
+  
+    .about-intro {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 36px;
+    }
+  
+    .about-description {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #fff;
+    margin-bottom: 30px;
+    }
+  
+    .about-quote {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #fff;
+    margin-top: 50px;
+    }
+  
+    .about-highlight {
+    color: #FF4CA0;
+    }
+  
+    /* bella : 모바일 */
+    @media (max-width: 1024px) {
+    .about-container {
+    padding: 0 20px;
+    }
+  
+    .about-content {
+    gap: 40px;
+    }
+  
+    .about-profile-image {
+    flex: 0 0 400px;
+    }
+  
+    .about-name-img {
+    max-width: 400px;
+    }
+    }
+  
+    @media (max-width: 768px) {
+    .about-section {
+    padding: 80px 0;
+    min-height: auto;
+    }
+  
+    .about-container {
+    padding: 0 60px;
+    }
+  
+    .about-header {
+    margin-bottom: 40px;
+    }
+  
+    .about-sub-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    word-break: keep-all;
+    }
+  
+    .about-sub-description {
+    font-size: 24px;
+    margin-bottom: 15px;
+    }
+  
+    .about-name-img {
+    max-width: 280px;
+    }
+  
+    .about-content {
+    flex-direction: column;
+    gap: 40px;
+    }
+  
+    .about-profile-image {
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    }
+  
+    .about-intro {
+    font-size: 16px;
+    margin-bottom: 24px;
+    word-break: keep-all;
+    }
+  
+    .about-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    word-break: keep-all;
+    }
+  
+    .about-description br {
+    display: none;
+    }
+  
+    .about-quote {
+    font-size: 16px;
+    margin-top: 30px;
+    word-break: keep-all;
+    }
+  
+    .about-quote br {
+    display: none;
+    }
+    }
+  
+    @media (max-width: 480px) {
+    .about-section {
+    padding: 60px 0;
+    }
+  
+    .about-sub-title {
+    font-size: 16px;
+    }
+  
+    .about-sub-description {
+    font-size: 20px;
+    }
+  
+    .about-name-img {
+    max-width: 240px;
+    }
+  
+    .about-profile-image {
+    max-width: 320px;
+    }
+  
+    .about-intro,
+    .about-description,
+    .about-quote {
+    font-size: 14px;
+    line-height: 1.5;
+    }
+    }

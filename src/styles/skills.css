@@ -229,7 +229,8 @@
 
   @media (max-width: 768px) {
   .skills {
-  padding: 60px 0;
+    padding: 60px 0 40px;
+    min-height: auto; 
   }
 
   .skills-title {
@@ -238,7 +239,7 @@
   }
 
   .skills-content {
-  padding: 0 40px;
+  padding: 0 30px;
   }
 
   .tools-grid {
@@ -304,7 +305,7 @@
 
   .skills-title {
   font-size: 18px;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   }
 
   .tools-row {
@@ -317,8 +318,8 @@
   }
 
   .skill-item img {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   }
 
   .icon-gauge-bar {

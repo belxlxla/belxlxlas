@@ -248,7 +248,7 @@ const Skills = () => {
 
     return (
         <section className="skills" ref={skillsRef}>
-      <h2 className="skills-title">Skills</h2>
+      <h2 className="skills-title">Skills (Touch icons)</h2>
       
       <div className="skills-content">
         <div className="tools-grid">

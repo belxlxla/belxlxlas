@@ -35,18 +35,52 @@ const MainContent = () => (
 );
 
 const App = () => {
-  // 채널톡
   useEffect(() => {
+    // 채널톡 초기화
     ChannelService.loadScript();
     ChannelService.boot({
       pluginKey: CHANNEL_PLUGIN_KEY
     });
-
+ 
+    // 이미지 다운로드 방지
+    const preventImageDownload = (e) => {
+      e.preventDefault();
+      return false;
+    };
+ 
+    document.addEventListener('contextmenu', preventImageDownload);
+    document.addEventListener('dragstart', preventImageDownload);
+ 
+    const applyImageProtection = () => {
+      const images = document.getElementsByTagName('img');
+      Array.from(images).forEach(img => {
+        img.draggable = false;
+        img.addEventListener('contextmenu', preventImageDownload);
+        img.addEventListener('dragstart', preventImageDownload);
+      });
+    };
+ 
+    applyImageProtection();
+    const observer = new MutationObserver(applyImageProtection);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+ 
     return () => {
       ChannelService.shutdown();
+      document.removeEventListener('contextmenu', preventImageDownload);
+      document.removeEventListener('dragstart', preventImageDownload);
+      observer.disconnect();
+ 
+      const images = document.getElementsByTagName('img');
+      Array.from(images).forEach(img => {
+        img.removeEventListener('contextmenu', preventImageDownload);
+        img.removeEventListener('dragstart', preventImageDownload);
+      });
     };
   }, []);
-
+ 
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-black">
@@ -60,6 +94,6 @@ const App = () => {
       </div>
     </BrowserRouter>
   );
-};
-
-export default App;
+ };
+ 
+ export default App;

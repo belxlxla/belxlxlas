@@ -1,51 +1,55 @@
   /* Design.css */
   .design {
-  min-height: 100vh;
-  background-color: #000;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .design h1 {
-  font-family: 'Montserrat', sans-serif;
-  color: #fff;
-  font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-size: 24px;
   }
 
   .design-slider {
-  width: 100%;
-  max-width: 1920px;
-  height: 1080px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+    width: 100%;
+    max-width: 1920px;
+    height: 1080px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    touch-action: pan-y pinch-zoom;
   }
 
   .slides-container {
-  position: relative;
-  width: 500px;
-  height: 100%;
-  margin: 0 auto;
+    position: relative;
+    width: 500px;
+    height: 100%;
+    margin: 0 auto;
+    touch-action: none;
   }
 
   .nav-button {
-  position: absolute;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 3;
-  transition: opacity 0.3s;
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+    transition: opacity 0.3s;
+    touch-action: manipulation;
   }
 
   .nav-button img {
-  width: 44px;
-  height: 86px;
-  opacity: 0.4;
-  transition: opacity 0.3s;
+    width: 44px;
+    height: 86px;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    pointer-events: none;
   }
 
   .nav-button:hover img {
@@ -66,11 +70,12 @@
   }
 
   .design-card {
-  position: absolute;
-  width: 100%;
-  height: auto;
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-  padding-top: 100px;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: 100px;
+    touch-action: pan-y pinch-zoom;
   }
 
   .design-card.active {
@@ -101,18 +106,24 @@
   }
 
   .card-inner {
-  background: #fff;
-  overflow: hidden;
+    background: #fff;
+    overflow: hidden;
+    touch-action: pan-y pinch-zoom;
   }
 
   .design-image {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
   }
 
   .design-details {
-  padding: 30px;
+    padding: 30px;
+    touch-action: pan-y;
   }
 
   .design-category {
@@ -151,11 +162,12 @@
   }
 
   .scrollable-description {
-  max-height: 140px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  margin: 20px 0;
-  padding-right: 20px;
+    max-height: 140px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 20px 0;
+    padding-right: 20px;
+    touch-action: pan-y;
   }
 
   .scrollable-description::-webkit-scrollbar {
@@ -228,7 +240,7 @@
 
   .design h1 {
   font-size: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   }
 
   .design-slider {
@@ -314,11 +326,11 @@
   /* bella : 모바일 */
   @media (max-width: 1440px) {
   .design h1 {
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   }
 
   .design-card {
-  padding-top: 0;
+  padding-top: 40px;
   }
 
   .nav-button.prev {

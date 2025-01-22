@@ -164,21 +164,21 @@
 
   @media (max-width: 480px) {
   .footer-container {
-  padding: 24px 15px;
+  padding: 44px 15px;
   }
 
   .footer-profile-image {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   }
 
   .footer-name,
   .footer-title-separator {
-  font-size: 14px;
+  font-size: 18px;
   }
 
   .footer-atelier {
-  font-size: 26px;
+  font-size: 34px;
   }
 
   .footer-detail-item {
@@ -186,12 +186,12 @@
   }
 
   .footer-label {
-  font-size: 12px;
+  font-size: 14px;
   width: 45px;
   }
 
   .footer-value {
-  font-size: 12px;
+  font-size: 14px;
   }
   }
 

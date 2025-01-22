@@ -90,25 +90,35 @@
 
   /* bella : 모바일 */
   @media (max-width: 768px) {
+
+    .main {
+      padding-top: 40vh;
+      min-height: 100vh;
+      position: relative;
+  }
+
   .content-container {
-  padding: 1rem;
-  align-items: flex-start;
-  padding-top: 60px;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
   }
 
   .content-wrapper {
-  gap: 1.5rem;
+    gap: 1.5rem;
+    position: relative;
   }
 
   .intro-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  white-space: normal;
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: normal;
+    will-change: transform, opacity;
   }
 
   .main-title {
-  font-size: 2.5rem;
-  letter-spacing: -0.5px;
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+    will-change: transform, opacity;
   }
 
   /* bella : 비디오 배치 부분 */
@@ -116,13 +126,13 @@
   object-position: center;
   min-height: 100%;
   width: auto;
-  height: auto;
+  height: 812px;
   }
   }
 
   @media (max-width: 480px) {
   .content-container {
-  padding-top: 30%;
+  padding-top: 0px;
   }
 
   .main-title {

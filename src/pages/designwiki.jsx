@@ -179,7 +179,7 @@ const DesignWiki = () => {
     <div className="design-wiki">
       <div className="wiki-content">
         <div className="wiki-title-wrapper">
-         <h1 className="wiki"><b>Design</b> <span className="wiki">Wiki</span></h1>
+         <h1 className="wiki"><b>Design</b>Wiki</h1>
         </div>
         <div className="wiki-list">
           {wikiItems.map((item, index) => (
