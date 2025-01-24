@@ -50,7 +50,6 @@ const Skills = () => {
         },
         { 
           threshold: 0.1,  // bella : 10% 정도 보일 때 트리거
-          // rootMargin: '0px 0px -10% 0px' 필요시 추가해도됨
         }
       );
       
@@ -69,77 +68,77 @@ const Skills = () => {
     const skillsData = {
       firstRow: [
         { 
-          name: 'Mac', 
+          name: 'Mac / 상', 
           icon: macIcon, 
           category: 'OS',
           proficiency: 80, // bella : 수치 조절하면 그래프가 바뀜
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #fff)'
         },
         { 
-          name: 'Figma', 
+          name: 'Figma / 최상', 
           icon: figmaIcon, 
           category: 'Design Tool',
           proficiency: 80,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #A259FF)'
         },
         { 
-          name: 'Zeplin', 
+          name: 'Zeplin / 상', 
           icon: sketchIcon, 
           category: 'Design Tool',
           proficiency: 80,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #FDBD39)'
         },
         { 
-          name: 'Photoshop', 
+          name: 'Photoshop / 최상', 
           icon: psIcon, 
           category: 'Design Tool',
           proficiency: 70,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #31A8FF)'
         },
         { 
-          name: 'Illustrator', 
+          name: 'Illustrator / 최상', 
           icon: aiIcon, 
           category: 'Design Tool',
           proficiency: 75,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #FF9A00)'
         },
         { 
-          name: 'XD', 
+          name: 'XD / 최상', 
           icon: xdIcon, 
           category: 'Design Tool',
           proficiency: 90,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #FF61F6)'
         },
         { 
-          name: 'After Effects', 
+          name: 'After Effect / 중상', 
           icon: aeIcon, 
           category: 'Design Tool',
           proficiency: 40,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #9999FF)'
         },
         { 
-          name: 'Premiere Pro', 
+          name: 'Premiere Pro / 중상', 
           icon: prIcon, 
           category: 'Design Tool',
           proficiency: 45,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #9999FF)' 
         },
         { 
-          name: 'Notion', 
+          name: 'Notion / 상', 
           icon: notionIcon, 
           category: 'Documents',
           proficiency: 65,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #fff)'
         },
         { 
-          name: 'Google Docs', 
+          name: 'Google Docs / 중', 
           icon: docsIcon, 
           category: 'Documents',
           proficiency: 55,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #1050F0)'
         },
         { 
-          name: 'Microsoft Office', 
+          name: 'Microsoft Office / 중', 
           icon: officeIcon, 
           category: 'Documents',
           proficiency: 55,
@@ -148,77 +147,77 @@ const Skills = () => {
       ],
       secondRow: [
         { 
-          name: 'Procreate', 
+          name: 'Procreate / 최상', 
           icon: proCreateIcon, 
           category: 'Drawing Tool',
           proficiency: 85,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #4430AD)'
         },
         { 
-          name: 'Midjourney', 
+          name: 'Midjourney / 최상', 
           icon: midIcon, 
           category: 'AI Tool',
           proficiency: 65,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #fff)'
         },
         { 
-          name: 'Claude', 
+          name: 'Claude / 최상', 
           icon: cldIcon, 
           category: 'AI Tool',
           proficiency: 85,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #CA9C7A)'
         },
         { 
-          name: 'Pika', 
+          name: 'Pika / 최상', 
           icon: pikaIcon, 
           category: 'AI Tool',
           proficiency: 85,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #FFEDD2)'
         },
         { 
-          name: 'Discord', 
+          name: 'Discord / 최상', 
           icon: discordIcon, 
           category: 'Chat Platform',
           proficiency: 85,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #505CD6)'
         },
         { 
-          name: 'YouTube', 
+          name: 'YouTube / 최상', 
           icon: youtubeIcon, 
           category: 'Media',
           proficiency: 85,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #FF0001)'
         },
         { 
-          name: 'HTML5', 
+          name: 'HTML5 / 중', 
           icon: htmlIcon, 
           category: 'Development Language',
           proficiency: 55,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #E44D26)'
         },
         { 
-          name: 'CSS3', 
+          name: 'CSS3 / 중', 
           icon: cssIcon, 
           category: 'Development Language',
           proficiency: 65,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #1758A7)'
         },
         { 
-          name: 'JavaScript', 
+          name: 'JavaScript / 중', 
           icon: jsIcon, 
           category: 'Development Language',
           proficiency: 45,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #F0DB4F)'
         },
         { 
-          name: 'React', 
+          name: 'React / 중', 
           icon: reactIcon, 
           category: 'Development Language',
           proficiency: 65,
           gaugeColor: 'linear-gradient(to right, #3e3e3e, #00DCF9)'
         },
         { 
-          name: 'VS Code', 
+          name: 'VS Code / 중상', 
           icon: vscodeIcon, 
           category: 'Development Tool',
           proficiency: 55,
@@ -227,7 +226,7 @@ const Skills = () => {
       ],
       thirdRow: [
         { 
-          name: 'GitHub', 
+          name: 'GitHub / 중상', 
           icon: githubIcon, 
           category: 'Productivity',
           proficiency: 45,

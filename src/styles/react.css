@@ -11,7 +11,7 @@
   .react-wrapper {
   position: relative;
   width: 100%;
-  height: 1080px;
+  height: 1100px;
   margin: 0 auto;
   overflow: hidden;
   }
@@ -21,7 +21,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 1100px;
   object-fit: cover;
   z-index: -1;
   }
@@ -33,7 +33,7 @@
   width: 100%;
   max-width: 1000px;
   margin: 40px auto;
-  height: 1000px;
+  height: 1080px;
   display: flex;
   flex-direction: column;
   }
@@ -370,12 +370,6 @@
   .language-labels {
   gap: 8px;
   font-size: 12px;
-  }
-
-  /* 반응형에서의 Vandi 로고 크기 조정 */
-  .vandi-logo {
-  width: 72px;
-  height: 72px;
   }
 
   /* 언어 바 레이블 조정 */

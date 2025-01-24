@@ -31,7 +31,7 @@ const About = () => {
             <div className="about-container" ref={sectionRef}>
                 <div className="about-header">
                     <p className="about-sub-title">
-                        <span className="about-text-bold">사용자 경험을 디자인</span>
+                        <span className="about-text-bold">사용자 경험을 디자인하고 개발</span>
                         <span className="about-text-light">하는 </span>
                         <span className="about-text-bold">15년차 시니어 아트디렉터</span>
                     </p>
@@ -47,12 +47,12 @@ const About = () => {
                     </div>
                     
                     <div className="about-text-content">
-                        <p className="about-intro">안녕하세요, 사용자 경험을 디자인하는 아트디렉터 임정민입니다.</p>
+                        <p className="about-intro">안녕하세요, 아트디렉터 임정민입니다.</p>
                         
                         <p className="about-description">
                             15년간 수많은 프로젝트를 이끌며 쌓아온 경험을 바탕으로,<br />
                             사용자와 브랜드 사이의 의미 있는 연결을 창조하는 것이 저의 핵심 가치입니다.<br />
-                            UI/UX 디자인을 통해 복잡한 문제를 우아한 솔루션으로 변환하는 과정에서<br />
+                            UI/UX 인터페이스 분석을 통해 복잡한 문제를 우아한 솔루션으로 변환하는 과정에서<br />
                             특별한 즐거움을 느낍니다.
                         </p>
                         

@@ -18,9 +18,9 @@ const ReactArea = () => {
       image: baNner1,
       link: "https://kyleportfolio.site/",
       languages: {
-        javascript: 64.1,
-        css: 35.2,
-        html: 0.7
+        javascript: 53.1,
+        css: 46.0,
+        html: 0.9
       }
     },
     {

@@ -146,23 +146,35 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.4s ease forwards;
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+  }
+
+  .proposal-alert-overlay.hiding {
+  opacity: 0;
   }
 
   .proposal-alert {
   background-color: #1a1a1a;
-  opacity: 0.9;
+  opacity: 0;
   padding: 40px;
   width: 400px;
   position: relative;
   text-align: center;
-  animation: slideIn 0.3s ease;
-  box-shadow: 0 4px 24px #000;
+  animation: slideInFade 0.4s ease-out forwards;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  }
+
+  .proposal-alert.hiding {
+  opacity: 0;
+  transform: translateY(20px);
   }
 
   .proposal-alert-confirm {
@@ -193,20 +205,20 @@
 
   @keyframes fadeIn {
   from {
-  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
   }
   to {
-  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.6);
   }
   }
 
-  @keyframes slideIn {
-  from {
+  @keyframes slideInFade {
+  0% {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-30px);
   }
-  to {
-  opacity: 1;
+  100% {
+  opacity: 0.9;
   transform: translateY(0);
   }
   }
@@ -234,11 +246,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.25s ease-in-out, transform 0.2s ease-in-out;
   }
 
   .proposal-alert-close:hover {
   color: #fff;
+  transform: scale(1.1);
   }
 
   .proposal-alert-confirm {
@@ -248,10 +261,15 @@
   padding: 12px 40px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  transform: translateY(0);
   }
 
-  /* Webkit 브라우저 스크롤바 스타일링 */
+  .proposal-alert-confirm:hover {
+  background-color: #FF4CA0;
+  transform: translateY(-2px);
+  }
+
   .proposal-textarea::-webkit-scrollbar {
   width: 2px !important;
   background-color: #161515 !important;
@@ -272,6 +290,15 @@
 
   .proposal-textarea {
   -ms-overflow-style: auto;
+  }
+
+  .proposal-alert-error {
+  border-top: 1px solid #FF4C4C;
+  }
+
+  .proposal-alert-confirm-error:hover {
+  background-color: #FF4C4C;
+  transform: translateY(-2px);
   }
 
 

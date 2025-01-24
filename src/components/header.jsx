@@ -96,7 +96,7 @@ const Header = () => {
       exit={{ x: "-100%" }}
       transition={{ 
         duration: 0.6,
-        ease: [0.16, 1, 0.3, 1]  // 이것은 cubic-bezier(0.16, 1, 0.3, 1)와 동일합니다
+        ease: [0.16, 1, 0.3, 1],
       }}
     >
       <ul className="mobile-nav-links">
