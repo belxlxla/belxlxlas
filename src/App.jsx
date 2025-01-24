@@ -53,14 +53,10 @@ const MainContent = () => {
   }, []);
 
   const handleScroll = useCallback(() => {
-    if (isScrolling.current) {
-      return;
-    }
+    if (isScrolling.current) return;
 
     const now = Date.now();
-    if (now - lastScrollTime.current < 800) { // 스크롤 쿨다운
-      return;
-    }
+    if (now - lastScrollTime.current < 800) return;
 
     throttle(() => {
       const currentScrollY = window.scrollY;
@@ -69,12 +65,13 @@ const MainContent = () => {
       scrollVelocity.current = currentScrollY - lastScrollY.current;
 
       document.querySelectorAll('section[id]').forEach(section => {
+        if (section.id === 'react') return; // React 섹션 제외
+
         const rect = section.getBoundingClientRect();
         const sectionTop = rect.top;
         const sectionHeight = rect.height;
         
-        // 컴포넌트 스냅 구현
-        const snapThreshold = windowHeight * 0.3; // 스냅 시작 지점
+        const snapThreshold = windowHeight * 0.3;
         const sectionCenter = sectionTop + (sectionHeight / 2);
         const distanceFromViewportCenter = Math.abs(sectionCenter - (windowHeight / 2));
 
@@ -96,7 +93,6 @@ const MainContent = () => {
           }, 100);
         }
 
-        // Opacity 계산
         const bottomThreshold = windowHeight * 1;
         const isNearBottom = sectionTop < bottomThreshold && sectionTop > -sectionHeight;
         
@@ -137,6 +133,8 @@ const MainContent = () => {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        if (entry.target.id === 'react') return; // React 섹션 제외
+        
         if (entry.isIntersecting) {
           const section = entry.target;
           const progress = entry.intersectionRatio;
@@ -150,7 +148,9 @@ const MainContent = () => {
     }, observerOptions);
 
     document.querySelectorAll('section[id]').forEach(section => {
-      observer.observe(section);
+      if (section.id !== 'react') { // React 섹션 제외
+        observer.observe(section);
+      }
     });
 
     const currentResistanceTimeout = resistanceTimeout.current;
@@ -177,15 +177,15 @@ const MainContent = () => {
     return thresholds;
   };
 
-  const getSectionStyle = (paddingTop = 0) => ({
-    opacity: 0,
-    transform: 'translateY(30px)',
-    transition: 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease-out',
+  const getSectionStyle = (paddingTop = 0, isReactSection = false) => ({
+    opacity: isReactSection ? 1 : 0,
+    transform: isReactSection ? 'none' : 'translateY(30px)',
+    transition: isReactSection ? 'none' : 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease-out',
     paddingTop: paddingTop ? `${paddingTop}px` : 0,
-    willChange: 'transform, opacity',
+    willChange: isReactSection ? 'auto' : 'transform, opacity',
     position: 'relative',
     zIndex: 1,
-    minHeight: '100vh' // 각 섹션의 최소 높이를 화면 높이로 설정
+    minHeight: '100vh'
   });
 
   return (
@@ -201,7 +201,7 @@ const MainContent = () => {
         <Design />
       </section>
       <Designwiki />
-      <section id="react" style={getSectionStyle(40)}>
+      <section id="react" style={getSectionStyle(40, true)}>
         <ReactArea />
       </section>
       <div style={{ position: 'relative', zIndex: 1 }}>
