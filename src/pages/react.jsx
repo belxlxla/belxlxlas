@@ -14,7 +14,7 @@ const ReactArea = () => {
     {
       id: 1,
       date: "2024. 01. (0.5 M/M)",
-      title: "Kyle’s portfolio website",
+      title: "Kyle's portfolio website",
       image: baNner1,
       link: "https://kyleportfolio.site/",
       languages: {
@@ -51,20 +51,22 @@ const ReactArea = () => {
 
   return (
     <div className="react-wrapper">
-        <video 
-                className="react-video" 
-                autoPlay 
-                muted 
-                loop 
-                playsInline 
-                poster={reactVideo.replace('.mp4', '.jpg')}
-              >
-                <source src={reactVideo} type="video/mp4" />
-              </video>
+      {/* 배경 비디오 섹션 */}
+      <video 
+        className="react-video" 
+        autoPlay 
+        muted 
+        loop 
+        playsInline 
+        poster={reactVideo.replace('.mp4', '.jpg')}
+      >
+        <source src={reactVideo} type="video/mp4" />
+      </video>
       
       <div className="react-container">
         <h1 className="react-title">React</h1>
         
+        {/* 포트폴리오 카드 목록 */}
         <div className="react-list">
           {portfolioItems.map((item, index) => (
             <div 
@@ -73,6 +75,7 @@ const ReactArea = () => {
               onMouseEnter={() => setHoveredItem(item.id)}
               onMouseLeave={() => setHoveredItem(null)}
             >
+              {/* 이미지 섹션 */}
               <div className="react-image-section">
                 {index === 1 && (
                   <div className="vandi-overlay">
@@ -91,40 +94,43 @@ const ReactArea = () => {
                 />
               </div>
               
+              {/* 컨텐츠 섹션 */}
               <div className="react-content">
                 <div className="react-header">
-                <span className="react-date">{item.date}</span>
-                    <h3 className="react-card-title">{item.title}</h3>
+                  <span className="react-date">{item.date}</span>
+                  <h3 className="react-card-title">{item.title}</h3>
                 </div>
 
+                {/* 언어 비율 표시 섹션 */}
                 <div className="language-section">
-                <p className="language-title">Language</p>
-                <div className="language-bar">
-                <div className="js-bar" style={{width: `${item.languages.javascript}%`}} />
-                <div className="css-bar" style={{width: `${item.languages.css}%`}} />
-                <div className="html-bar" style={{width: `${item.languages.html}%`}} />
-                </div>
-                <div className="language-labels">
-                <span className="js-label">Javascript {item.languages.javascript}%</span>
-                <span className="css-label">CSS {item.languages.css}%</span>
-                <span className="html-label">HTML {item.languages.html}%</span>
-                </div>
+                  <p className="language-title">Language</p>
+                  <div className="language-bar">
+                    <div className="js-bar" style={{width: `${item.languages.javascript}%`}} />
+                    <div className="css-bar" style={{width: `${item.languages.css}%`}} />
+                    <div className="html-bar" style={{width: `${item.languages.html}%`}} />
+                  </div>
+                  <div className="language-labels">
+                    <span className="js-label">Javascript {item.languages.javascript}%</span>
+                    <span className="css-label">CSS {item.languages.css}%</span>
+                    <span className="html-label">HTML {item.languages.html}%</span>
+                  </div>
                 </div>
 
+                {/* 웹사이트 링크 버튼 */}
                 <a 
-                href={item.link}
-                className={`react-link ${hoveredItem === item.id ? 'hovered' : ''}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                  href={item.link}
+                  className={`react-link ${hoveredItem === item.id ? 'hovered' : ''}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                Go to Website
-                <img 
-                src={arrRight} 
-                alt="arrow" 
-                className="react-arrow"
-                />
+                  Go to Website
+                  <img 
+                    src={arrRight} 
+                    alt="arrow" 
+                    className="react-arrow"
+                  />
                 </a>
-                </div>
+              </div>
             </div>
           ))}
         </div>
