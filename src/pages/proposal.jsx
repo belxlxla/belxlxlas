@@ -265,9 +265,11 @@ const Proposal = () => {
             </FormGroup>
             
             <FormGroup label="Contact Information">
-              <input
+            <input
                 className="proposal-input"
                 type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 name="contact"
                 placeholder="연락처를 입력해주세요"
                 value={formData.contact}
