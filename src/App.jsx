@@ -17,15 +17,15 @@ import Proposal from './pages/proposal.jsx';
 const CHANNEL_PLUGIN_KEY = 'b14f14c2-d96f-4696-b128-0f8d84e8609f';
 
 const MainContent = () => {
-
   const lastScrollY = useRef(0);
   const scrollVelocity = useRef(0);
   const isResisting = useRef(false);
   const resistanceTimeout = useRef(null);
   const animationFrame = useRef(null);
+  const isScrolling = useRef(false);
+  const lastScrollTime = useRef(Date.now());
 
-
-// eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const createSmoothScroll = useCallback((targetPosition, duration = 800) => {
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
@@ -52,75 +52,79 @@ const MainContent = () => {
     animationFrame.current = requestAnimationFrame(animation);
   }, []);
 
-  // 스크롤 저항
-  const applyScrollResistance = useCallback((section, direction) => {
-    if (isResisting.current) return;
-    isResisting.current = true;
-
-    const applyResistanceEffect = () => {
-      const moveDistance = direction === 'up' ? 30 : -30;
-      
-      section.style.transform = `translateY(${moveDistance}px)`;
-      section.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-
-      setTimeout(() => {
-        section.style.transform = 'translateY(0)';
-        section.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
-      }, 150);
-    };
-
-    applyResistanceEffect();
-
-    if (resistanceTimeout.current) {
-      clearTimeout(resistanceTimeout.current);
+  const handleScroll = useCallback(() => {
+    if (isScrolling.current) {
+      return;
     }
-    resistanceTimeout.current = setTimeout(() => {
-      isResisting.current = false;
-    }, 800);
-  }, []);
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleScroll = useCallback(
+    const now = Date.now();
+    if (now - lastScrollTime.current < 800) { // 스크롤 쿨다운
+      return;
+    }
+
     throttle(() => {
       const currentScrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       
       scrollVelocity.current = currentScrollY - lastScrollY.current;
-      const scrollDirection = scrollVelocity.current > 0 ? 'down' : 'up';
 
       document.querySelectorAll('section[id]').forEach(section => {
         const rect = section.getBoundingClientRect();
         const sectionTop = rect.top;
+        const sectionHeight = rect.height;
         
-        const viewportCenter = windowHeight / 2;
-        const distanceFromCenter = Math.abs(sectionTop - viewportCenter);
-        
-        if (distanceFromCenter < windowHeight * 0.2) { // 뷰포트 중앙 ±20% 영역
-          const velocityThreshold = 30; // 스크롤 속도 임계값
+        // 컴포넌트 스냅 구현
+        const snapThreshold = windowHeight * 0.3; // 스냅 시작 지점
+        const sectionCenter = sectionTop + (sectionHeight / 2);
+        const distanceFromViewportCenter = Math.abs(sectionCenter - (windowHeight / 2));
+
+        if (distanceFromViewportCenter < snapThreshold && !isScrolling.current) {
+          isScrolling.current = true;
+          lastScrollTime.current = now;
+
+          const targetScroll = currentScrollY + sectionTop - (windowHeight / 2) + (sectionHeight / 2);
           
-          if (Math.abs(scrollVelocity.current) > velocityThreshold) {
-            applyScrollResistance(section, scrollDirection);
-          }
+          setTimeout(() => {
+            window.scrollTo({
+              top: targetScroll,
+              behavior: 'smooth'
+            });
+            
+            setTimeout(() => {
+              isScrolling.current = false;
+            }, 1000);
+          }, 100);
         }
 
-        // 일반 스크롤 애니메이션
-        const progress = 1 - Math.abs(sectionTop - viewportCenter) / windowHeight;
-        const opacity = Math.min(Math.max(progress * 1.5, 0), 1);
-        const translateY = Math.max(0, 50 * (1 - progress));
+        // Opacity 계산
+        const bottomThreshold = windowHeight * 1;
+        const isNearBottom = sectionTop < bottomThreshold && sectionTop > -sectionHeight;
+        
+        let opacity;
+        if (isNearBottom) {
+          const bottomProgress = (bottomThreshold - sectionTop) / (bottomThreshold * 0.1);
+          opacity = Math.min(Math.max(bottomProgress, 0), 1);
+        } else {
+          const progress = 1 - distanceFromViewportCenter / windowHeight;
+          opacity = Math.min(Math.max(progress, 0), 1);
+        }
+
+        const translateY = Math.max(0, 30 * (1 - opacity));
 
         requestAnimationFrame(() => {
           if (!isResisting.current) {
             section.style.opacity = opacity;
             section.style.transform = `translateY(${translateY}px)`;
-            section.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
+            section.style.transition = isNearBottom 
+              ? 'transform 0.4s ease-out, opacity 0.3s ease-out'
+              : 'transform 0.6s ease-out, opacity 0.3s ease-out';
           }
         });
       });
 
       lastScrollY.current = currentScrollY;
-    }, 16),
-    [applyScrollResistance]
-  );
+    }, 16);
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -137,7 +141,7 @@ const MainContent = () => {
           const section = entry.target;
           const progress = entry.intersectionRatio;
           
-          section.style.opacity = Math.min(progress * 1.5, 1);
+          section.style.opacity = Math.min(progress * 1.2, 1);
           if (!isResisting.current) {
             section.style.transform = `translateY(${30 * (1 - progress)}px)`;
           }
@@ -149,14 +153,17 @@ const MainContent = () => {
       observer.observe(section);
     });
 
+    const currentResistanceTimeout = resistanceTimeout.current;
+    const currentAnimationFrame = animationFrame.current;
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
-      if (resistanceTimeout.current) {
-        clearTimeout(resistanceTimeout.current);
+      if (currentResistanceTimeout) {
+        clearTimeout(currentResistanceTimeout);
       }
-      if (animationFrame.current) {
-        cancelAnimationFrame(animationFrame.current);
+      if (currentAnimationFrame) {
+        cancelAnimationFrame(currentAnimationFrame);
       }
     };
   }, [handleScroll]);
@@ -177,7 +184,8 @@ const MainContent = () => {
     paddingTop: paddingTop ? `${paddingTop}px` : 0,
     willChange: 'transform, opacity',
     position: 'relative',
-    zIndex: 1
+    zIndex: 1,
+    minHeight: '100vh' // 각 섹션의 최소 높이를 화면 높이로 설정
   });
 
   return (
