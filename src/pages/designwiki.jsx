@@ -1,5 +1,5 @@
-// designwiki.jsx
-import React, { useState } from 'react';
+// Designwiki.jsx
+import React, { useState, useEffect } from 'react';
 import '../styles/designwiki.css';
 import arrUp from '../assets/arrup.svg';
 import arrDown from '../assets/arrdown.svg';
@@ -7,9 +7,18 @@ import conTents1 from '../assets/contents1.svg';
 import conTents2 from '../assets/contents2.svg';
 import conTents3 from '../assets/contents3.svg';
 import conTents4 from '../assets/contents4.svg';
+import { saveData, getData } from '../utils/storage';
+import { updateContent } from '../utils/domUtils';
 
 const DesignWiki = () => {
- const [openItems, setOpenItems] = useState({ 1: true });
+    const [openItems, setOpenItems] = useState(() => {
+      const savedState = getData('wikiOpenState');
+      return savedState ? JSON.parse(savedState) : { 1: true };
+    });
+  
+    useEffect(() => {
+      saveData('wikiOpenState', JSON.stringify(openItems));
+    }, [openItems]);
 
  const wikiItems = [
     {
@@ -169,10 +178,22 @@ const DesignWiki = () => {
  ];
 
  const toggleItem = (id) => {
-    setOpenItems(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
+    setOpenItems(prev => {
+      const newState = {
+        ...prev,
+        [id]: !prev[id]
+      };
+      saveData('wikiOpenState', JSON.stringify(newState));
+      return newState;
+    });
+
+    const itemElement = document.getElementById(`wiki-item-${id}`);
+    if (itemElement) {
+      updateContent(
+        openItems[id] ? '접힘' : '펼쳐짐',
+        `wiki-item-status-${id}`
+      );
+    }
   };
 
   return (
@@ -181,15 +202,16 @@ const DesignWiki = () => {
         <div className="wiki-title-wrapper">
          <h1 className="wiki"><b>Design</b>Wiki</h1>
         </div>
-        <div className="wiki-list">
-          {wikiItems.map((item, index) => (
+            <div className="wiki-list">
+            {wikiItems.map((item, index) => (
             <div 
-              key={item.id} 
-              className={`wiki-item ${openItems[item.id] ? 'open' : ''}`}
-              style={{
+                key={item.id}
+                id={`wiki-item-${item.id}`}
+                className={`wiki-item ${openItems[item.id] ? 'open' : ''}`}
+                style={{
                 opacity: Math.max(1 - (index * 0.2), 0.3)
-              }}
-            >
+                }}
+          >
               <div className="wiki-header" onClick={() => toggleItem(item.id)}>
                 <div className="wiki-date">{item.date}</div>
                 <h2 className="wiki-title">{item.title}</h2>

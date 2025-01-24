@@ -51,18 +51,16 @@ const ReactArea = () => {
 
   return (
     <div className="react-wrapper">
-<video 
-        className="react-video" 
-        autoPlay 
-        muted 
-        loop 
-        playsInline 
-        webkit-playsinline="true"
-        preload="auto"
-        defaultMuted
-      >
-        <source src={reactVideo} type="video/mp4" />
-      </video>
+        <video 
+                className="react-video" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline 
+                poster={reactVideo.replace('.mp4', '.jpg')}
+              >
+                <source src={reactVideo} type="video/mp4" />
+              </video>
       
       <div className="react-container">
         <h1 className="react-title">React</h1>

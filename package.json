@@ -5,6 +5,8 @@
   "dependencies": {
     "@channel.io/channel-web-sdk-loader": "^2.0.0",
     "@reduxjs/toolkit": "^2.5.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.9",
     "cors": "^2.8.5",
