@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import axios from 'axios';
 import "../styles/proposal.css";
 
 const Icons = {
@@ -189,37 +190,26 @@ const Proposal = () => {
       : formData.domain || selectedDomain
       ? `${formData.email}@${formData.domain || selectedDomain}`
       : null;
-
-    if (!completeEmail || !completeEmail.includes("@")) {
-      console.error("Invalid email or domain:", {
-        email: formData.email,
-        domain: formData.domain || selectedDomain,
-      });
-      return false;
-    }
-
+  
+    if (!completeEmail) return false;
+  
     const emailHtml = generateEmailTemplate(formData, selectedDomain);
-    const API_URL = process.env.REACT_APP_API_URL || "https://www.belxlxla.com";
-
-    try {
-      const response = await fetch(`${API_URL}/api/send-email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          formData: { ...formData, completeEmail },
-          template: emailHtml,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error("이메일 전송 실패:", errorData);
-        throw new Error(errorData.message || "이메일 전송에 실패했습니다.");
+    const axiosInstance = axios.create({
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+        'SameSite': 'Strict'
       }
-
-      return true;
+    });
+  
+    const API_URL = process.env.REACT_APP_API_URL || "https://www.belxlxla.com";
+  
+    try {
+      const response = await axiosInstance.post(`${API_URL}/api/send-email`, {
+        formData: { ...formData, completeEmail },
+        template: emailHtml,
+      });
+      return response.status === 200;
     } catch (error) {
       console.error("이메일 전송 중 오류 발생:", error);
       return false;
