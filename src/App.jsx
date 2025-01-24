@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import * as ChannelService from '@channel.io/channel-web-sdk-loader';
-import Counter from './components/counter.jsx';
 import './styles/globalStyle.css';
 import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
@@ -25,7 +24,6 @@ const MainContent = () => (
     <Designwiki />
     <section id="react" style={{ paddingTop: '40px' }}>
       <ReactArea />
-      <Counter />
     </section>
     <ArchiveArea />
     <section id="proposals"><Proposal /></section>
