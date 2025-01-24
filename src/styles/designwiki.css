@@ -274,6 +274,7 @@
   @media (max-width: 480px) {
   .design-wiki {
   padding: 30px 15px;
+  padding-bottom: 120px;
   }
 
   .wiki-title-wrapper {

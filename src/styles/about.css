@@ -205,6 +205,7 @@
     @media (max-width: 480px) {
     .about-section {
     padding: 60px 0;
+    padding-bottom: 120px;
     }
   
     .about-sub-title {
