@@ -79,7 +79,6 @@ const ReactArea = () => {
                 {index === 1 && (
                   <div className="vandi-overlay">
                     <div className="vandi-logo-container">
-                      <img src={item.image} alt="Vandi Logo" className="vandi-logo" />
                       <span className="vandi-text"></span>
                     </div>
                   </div>
