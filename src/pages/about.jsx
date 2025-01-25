@@ -33,7 +33,7 @@ const About = () => {
                     <p className="about-sub-title">
                         <span className="about-text-bold">사용자 경험을 디자인하고 개발</span>
                         <span className="about-text-light">하는 </span>
-                        <span className="about-text-bold">15년차 시니어 아트디렉터</span>
+                        <span className="about-text-bold">15년차 시니어 Design Developer</span>
                     </p>
                     <div className="about-name-wrapper">
                         <p className="about-sub-description">임정민 입니다.</p>
@@ -47,7 +47,7 @@ const About = () => {
                     </div>
                     
                     <div className="about-text-content">
-                        <p className="about-intro">안녕하세요, 아트디렉터 임정민입니다.</p>
+                        <p className="about-intro">안녕하세요, Design Developer 임정민 입니다.</p>
                         
                         <p className="about-description">
                             15년간 수많은 프로젝트를 이끌며 쌓아온 경험을 바탕으로,<br />
@@ -73,9 +73,9 @@ const About = () => {
                         </p>
                         
                         <p className="about-quote">
-                            <span className="about-highlight">"나는 끊임없는 진화하는 과정속에 있다"</span> 라는 믿음으로, <br />
+                            <span className="about-highlight">"나는 끊임없이 진화하는 과정속에 있다"</span> 라는 믿음으로, <br />
                             저는 오늘도 새로운 도전을 향해 항해하고 있습니다.<br />
-                            함께 일하는 모든 분들과 혁신적인 디자인 여정을 만들어 가고 싶습니다.
+                            함께 일하는 모든 분들과 혁신적인 여정을 만들어 가고 싶습니다.
                         </p>
                     </div>
                 </div>
