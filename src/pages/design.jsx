@@ -7,6 +7,7 @@ import designImg1 from '../assets/design1.svg';
 import designImg2 from '../assets/design2.svg';
 import designImg3 from '../assets/design3.svg';
 import designImg4 from '../assets/design4.svg';
+import designImg5 from '../assets/design5.svg';
 
 const Design = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -49,6 +50,15 @@ const Design = () => {
             title: 'Yo! Toyota! App design',
             subtitle: '요토요타 어플리케이션 디자인 총괄',
             description: `웹앱으로 개발된 요토요타 어플리케이션 디자인 유지보수 총괄로\n현재도 디자인 추가사항이나 신차 출시 시 신차 디자인 추가,\n이벤트 및 프로모션, 공지사항 페이지 추가 등\n어플리케이션의 디자인 유지보수 총괄을 맡고 있습니다.\n\n현재도 디자인을 맡아 진행하고 있으며,\nAOS/iOS 앱 내 모든 디자인 작업 기여도 100% 입니다.`,
+            stacks: ['Maintaining corporate tone and manner', 'Optimized UX', 'Clean and crisp design']
+        },
+        {
+            id: 5,
+            image: designImg5,
+            category: 'Design > UI/UX',
+            title: 'Busan - Visitpass app design',
+            subtitle: '부산관광공사 주관 관광플랫폼 앱 디자인',
+            description: `부산관광공사에서 주관한 조달청 사업인 관광 플랫폼 사업에\n선정되어 브랜딩 부터 기획, 앱 디자인까지 총괄하여 진행하였습니다.\n네이밍은 ‘Visit Busan’ 으로 정하고, 부산의 시원한 이미지를 담아\n블루계열로 컬러링 하여 다양한 국가에서 부산을 접할 수 있도록\n한국어 외 3개국어 기반으로 UI 최적화를 하였습니다.\n현재 현행화 되어 어플리케이션을 다운로드 받을 수 있으며\n부산관광공사에서 2021년 말에 시작한 사업이지만 \n지금도 가장 푸쉬하고 있는 프로젝트로\n\n다양한 국가에서 아름다운 부산을 방문하여\n곳곳의 스팟을 방문할 수 있도록 솔로, 커플, 가족여행 별\n카테고리 여행 컨셉 콘텐츠 제작과\nPASS 화 하여 부산역에 방문했을 때 실물 교통카드와 호환될 수\n있도록 설계 및 호환성 검토, 사용자 인터페이스 최적화 등\n다양한 유저인터페이스를 고려하여\n디자인 하였습니다.`,
             stacks: ['Maintaining corporate tone and manner', 'Optimized UX', 'Clean and crisp design']
         }
     ];
