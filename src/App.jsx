@@ -1,8 +1,8 @@
 import React, { useEffect, useCallback, useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { throttle } from 'lodash';
 import * as ChannelService from '@channel.io/channel-web-sdk-loader';
 import './styles/globalStyle.css';
+import './App.css';
 import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
 import Main from './pages/main.jsx';
@@ -17,197 +17,108 @@ import Proposal from './pages/proposal.jsx';
 const CHANNEL_PLUGIN_KEY = 'b14f14c2-d96f-4696-b128-0f8d84e8609f';
 
 const MainContent = () => {
-  const lastScrollY = useRef(0);
-  const scrollVelocity = useRef(0);
-  const isResisting = useRef(false);
-  const resistanceTimeout = useRef(null);
-  const animationFrame = useRef(null);
-  const isScrolling = useRef(false);
-  const lastScrollTime = useRef(Date.now());
+  const isAnimating = useRef(false);
+  const lastScrollTime = useRef(0);
 
-  // eslint-disable-next-line no-unused-vars
-  const createSmoothScroll = useCallback((targetPosition, duration = 800) => {
-    const startPosition = window.scrollY;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
+  const handleWheel = useCallback((e) => {
+    if (isAnimating.current) return;
 
-    const animation = (currentTime) => {
-      if (!startTime) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const ease = progress < 0.5
-        ? 8 * progress * progress * progress * progress
-        : 1 - Math.pow(-2 * progress + 2, 4) / 2;
+    const currentTime = performance.now();
+    if (currentTime - lastScrollTime.current < 3000) return;
 
-      window.scrollTo(0, startPosition + distance * ease);
-
-      if (progress < 1) {
-        animationFrame.current = requestAnimationFrame(animation);
-      }
-    };
-
-    if (animationFrame.current) {
-      cancelAnimationFrame(animationFrame.current);
-    }
-    animationFrame.current = requestAnimationFrame(animation);
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    if (isScrolling.current) return;
-
-    const now = Date.now();
-    if (now - lastScrollTime.current < 800) return;
-
-    throttle(() => {
-      const currentScrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
+    const sections = Array.from(document.querySelectorAll('section[id]'))
+      .filter(section => section.id !== 'react');
       
-      scrollVelocity.current = currentScrollY - lastScrollY.current;
+    const windowHeight = window.innerHeight;
+    const currentScrollY = window.scrollY;
+    const scrollDirection = Math.sign(e.deltaY);
+    
+    let targetSection = null;
 
-      document.querySelectorAll('section[id]').forEach(section => {
-        if (section.id === 'react') return; // React 섹션 제외
+    for (let i = 0; i < sections.length; i++) {
+      const section = sections[i];
+      const rect = section.getBoundingClientRect();
+      const sectionTop = currentScrollY + rect.top;
+      
+      if (scrollDirection > 0 && sectionTop > currentScrollY + 1000) {
+        targetSection = section;
+        break;
+      } else if (scrollDirection < 0 && sectionTop < currentScrollY - 1000) {
+        targetSection = sections[i - 1] || section;
+      }
+    }
 
-        const rect = section.getBoundingClientRect();
-        const sectionTop = rect.top;
-        const sectionHeight = rect.height;
-        
-        const snapThreshold = windowHeight * 0.3;
-        const sectionCenter = sectionTop + (sectionHeight / 2);
-        const distanceFromViewportCenter = Math.abs(sectionCenter - (windowHeight / 2));
+    if (targetSection) {
+      isAnimating.current = true;
+      lastScrollTime.current = currentTime;
 
-        if (distanceFromViewportCenter < snapThreshold && !isScrolling.current) {
-          isScrolling.current = true;
-          lastScrollTime.current = now;
+      const targetY = currentScrollY + targetSection.getBoundingClientRect().top - 
+                     (windowHeight - targetSection.offsetHeight) / 2;
 
-          const targetScroll = currentScrollY + sectionTop - (windowHeight / 2) + (sectionHeight / 2);
-          
-          setTimeout(() => {
-            window.scrollTo({
-              top: targetScroll,
-              behavior: 'smooth'
-            });
-            
-            setTimeout(() => {
-              isScrolling.current = false;
-            }, 1000);
-          }, 100);
-        }
-
-        const bottomThreshold = windowHeight * 1;
-        const isNearBottom = sectionTop < bottomThreshold && sectionTop > -sectionHeight;
-        
-        let opacity;
-        if (isNearBottom) {
-          const bottomProgress = (bottomThreshold - sectionTop) / (bottomThreshold * 0.1);
-          opacity = Math.min(Math.max(bottomProgress, 0), 1);
-        } else {
-          const progress = 1 - distanceFromViewportCenter / windowHeight;
-          opacity = Math.min(Math.max(progress, 0), 1);
-        }
-
-        const translateY = Math.max(0, 30 * (1 - opacity));
-
-        requestAnimationFrame(() => {
-          if (!isResisting.current) {
-            section.style.opacity = opacity;
-            section.style.transform = `translateY(${translateY}px)`;
-            section.style.transition = isNearBottom 
-              ? 'transform 0.4s ease-out, opacity 0.3s ease-out'
-              : 'transform 0.6s ease-out, opacity 0.3s ease-out';
-          }
-        });
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth'
       });
 
-      lastScrollY.current = currentScrollY;
-    }, 16);
+      setTimeout(() => {
+        isAnimating.current = false;
+      }, 3000);
+    }
   }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: buildThresholdList()
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.target.id === 'react') return; // React 섹션 제외
-        
-        if (entry.isIntersecting) {
-          const section = entry.target;
-          const progress = entry.intersectionRatio;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.target.id === 'react') return;
           
-          section.style.opacity = Math.min(progress * 1.2, 1);
-          if (!isResisting.current) {
-            section.style.transform = `translateY(${30 * (1 - progress)}px)`;
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
           }
-        }
-      });
-    }, observerOptions);
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px'
+      }
+    );
 
     document.querySelectorAll('section[id]').forEach(section => {
-      if (section.id !== 'react') { // React 섹션 제외
+      if (section.id !== 'react') {
         observer.observe(section);
       }
     });
 
-    const currentResistanceTimeout = resistanceTimeout.current;
-    const currentAnimationFrame = animationFrame.current;
+    window.addEventListener('wheel', handleWheel, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
-      if (currentResistanceTimeout) {
-        clearTimeout(currentResistanceTimeout);
-      }
-      if (currentAnimationFrame) {
-        cancelAnimationFrame(currentAnimationFrame);
-      }
+      window.removeEventListener('wheel', handleWheel);
     };
-  }, [handleScroll]);
-
-  const buildThresholdList = () => {
-    const thresholds = [];
-    const numSteps = 20;
-    for (let i = 0; i <= numSteps; i++) {
-      thresholds.push(i / numSteps);
-    }
-    return thresholds;
-  };
-
-  const getSectionStyle = (paddingTop = 0, isReactSection = false) => ({
-    opacity: isReactSection ? 1 : 0,
-    transform: isReactSection ? 'none' : 'translateY(30px)',
-    transition: isReactSection ? 'none' : 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease-out',
-    paddingTop: paddingTop ? `${paddingTop}px` : 0,
-    willChange: isReactSection ? 'auto' : 'transform, opacity',
-    position: 'relative',
-    zIndex: 1,
-    minHeight: '100vh'
-  });
+  }, [handleWheel]);
 
   return (
     <div>
       <Main />
-      <section id="about" style={getSectionStyle(100)}>
+      <section id="about" className="section pt-100">
         <About />
       </section>
-      <section id="skills" style={getSectionStyle(100)}>
+      <section id="skills" className="section pt-100">
         <Skills />
       </section>
-      <section id="design" style={getSectionStyle(200)}>
+      <section id="design" className="section pt-200">
         <Design />
       </section>
       <Designwiki />
-      <section id="react" style={getSectionStyle(40, true)}>
+      <section id="react" className="section react-section pt-40">
         <ReactArea />
       </section>
       <div style={{ position: 'relative', zIndex: 1 }}>
         <ArchiveArea />
       </div>
-      <section id="proposals" style={getSectionStyle()}>
+      <section id="proposals" className="section">
         <Proposal />
       </section>
     </div>
