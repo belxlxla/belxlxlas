@@ -19,50 +19,72 @@ const CHANNEL_PLUGIN_KEY = 'b14f14c2-d96f-4696-b128-0f8d84e8609f';
 const MainContent = () => {
   const isAnimating = useRef(false);
   const lastScrollTime = useRef(0);
+  const scrollAccumulator = useRef(0);
+  const SCROLL_THRESHOLD = 180; // 스크롤 한계값(임계값)
 
   const handleWheel = useCallback((e) => {
     if (isAnimating.current) return;
 
     const currentTime = performance.now();
-    if (currentTime - lastScrollTime.current < 3000) return;
+    if (currentTime - lastScrollTime.current < 50) return; // 스크롤 이벤트 방지
 
     const sections = Array.from(document.querySelectorAll('section[id]'))
-      .filter(section => section.id !== 'react');
+      .filter(section => section.id !== 'footer');
       
     const windowHeight = window.innerHeight;
     const currentScrollY = window.scrollY;
-    const scrollDirection = Math.sign(e.deltaY);
     
-    let targetSection = null;
+    // 거리 누적
+    scrollAccumulator.current += Math.abs(e.deltaY);
 
+    // 섹션 서치
+    let currentSectionIndex = -1;
     for (let i = 0; i < sections.length; i++) {
       const section = sections[i];
       const rect = section.getBoundingClientRect();
-      const sectionTop = currentScrollY + rect.top;
-      
-      if (scrollDirection > 0 && sectionTop > currentScrollY + 1000) {
-        targetSection = section;
+      if (rect.top <= windowHeight/2 && rect.bottom >= windowHeight/2) {
+        currentSectionIndex = i;
         break;
-      } else if (scrollDirection < 0 && sectionTop < currentScrollY - 1000) {
-        targetSection = sections[i - 1] || section;
       }
     }
 
-    if (targetSection) {
-      isAnimating.current = true;
-      lastScrollTime.current = currentTime;
+    // 한계값(임계값) 넘었을 떄 이동
+    if (scrollAccumulator.current > SCROLL_THRESHOLD) {
+      const scrollDirection = Math.sign(e.deltaY);
+      let targetIndex = currentSectionIndex;
 
-      const targetY = currentScrollY + targetSection.getBoundingClientRect().top - 
-                     (windowHeight - targetSection.offsetHeight) / 2;
+      if (scrollDirection > 0 && currentSectionIndex < sections.length - 1) {
+        targetIndex = currentSectionIndex + 1;
+      } else if (scrollDirection < 0 && currentSectionIndex > 0) {
+        targetIndex = currentSectionIndex - 1;
+      }
 
-      window.scrollTo({
-        top: targetY,
-        behavior: 'smooth'
-      });
+      const targetSection = sections[targetIndex];
 
+      if (targetSection && targetIndex !== currentSectionIndex) {
+        isAnimating.current = true;
+        lastScrollTime.current = currentTime;
+        scrollAccumulator.current = 0; // 초기화
+
+        const targetY = currentScrollY + targetSection.getBoundingClientRect().top - 
+                       (windowHeight - targetSection.offsetHeight) / 2;
+
+        window.scrollTo({
+          top: targetY,
+          behavior: 'smooth'
+        });
+
+        setTimeout(() => {
+          isAnimating.current = false;
+        }, 1000);
+      }
+    }
+
+    // 일정 시간 후 값 리셋
+    if (!isAnimating.current) {
       setTimeout(() => {
-        isAnimating.current = false;
-      }, 3000);
+        scrollAccumulator.current = 0;
+      }, 200);
     }
   }, []);
 
@@ -70,8 +92,6 @@ const MainContent = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          if (entry.target.id === 'react') return;
-          
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           } else {
@@ -86,9 +106,7 @@ const MainContent = () => {
     );
 
     document.querySelectorAll('section[id]').forEach(section => {
-      if (section.id !== 'react') {
-        observer.observe(section);
-      }
+      observer.observe(section);
     });
 
     window.addEventListener('wheel', handleWheel, { passive: true });
@@ -101,7 +119,9 @@ const MainContent = () => {
 
   return (
     <div>
-      <Main />
+      <section id="main" className="section">
+        <Main />
+      </section>
       <section id="about" className="section pt-100">
         <About />
       </section>
@@ -111,13 +131,17 @@ const MainContent = () => {
       <section id="design" className="section pt-200">
         <Design />
       </section>
-      <Designwiki />
+      <section id="designwiki" className="section pt-100">
+        <Designwiki />
+      </section>
       <section id="react" className="section react-section pt-40">
         <ReactArea />
       </section>
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <ArchiveArea />
-      </div>
+      <section id="archive" className="section">
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <ArchiveArea />
+        </div>
+      </section>
       <section id="proposals" className="section">
         <Proposal />
       </section>
