@@ -20,24 +20,19 @@ const MainContent = () => {
   const isAnimating = useRef(false);
   const lastScrollTime = useRef(0);
   const scrollAccumulator = useRef(0);
-  const SCROLL_THRESHOLD = 180; // 스크롤 한계값(임계값)
+  const touchStartY = useRef(0);
+  const touchMoveY = useRef(0);
+  const SCROLL_THRESHOLD = 100; // 웹 임계값
+  const TOUCH_THRESHOLD = 50; // 모바일 스크롤 임계값
 
-  const handleWheel = useCallback((e) => {
-    if (isAnimating.current) return;
-
-    const currentTime = performance.now();
-    if (currentTime - lastScrollTime.current < 50) return; // 스크롤 이벤트 방지
-
+  const moveToSection = useCallback((direction) => {
     const sections = Array.from(document.querySelectorAll('section[id]'))
       .filter(section => section.id !== 'footer');
       
     const windowHeight = window.innerHeight;
     const currentScrollY = window.scrollY;
     
-    // 거리 누적
-    scrollAccumulator.current += Math.abs(e.deltaY);
-
-    // 섹션 서치
+    // 현재 섹션 서치
     let currentSectionIndex = -1;
     for (let i = 0; i < sections.length; i++) {
       const section = sections[i];
@@ -48,45 +43,74 @@ const MainContent = () => {
       }
     }
 
-    // 한계값(임계값) 넘었을 떄 이동
-    if (scrollAccumulator.current > SCROLL_THRESHOLD) {
-      const scrollDirection = Math.sign(e.deltaY);
-      let targetIndex = currentSectionIndex;
-
-      if (scrollDirection > 0 && currentSectionIndex < sections.length - 1) {
-        targetIndex = currentSectionIndex + 1;
-      } else if (scrollDirection < 0 && currentSectionIndex > 0) {
-        targetIndex = currentSectionIndex - 1;
-      }
-
-      const targetSection = sections[targetIndex];
-
-      if (targetSection && targetIndex !== currentSectionIndex) {
-        isAnimating.current = true;
-        lastScrollTime.current = currentTime;
-        scrollAccumulator.current = 0; // 초기화
-
-        const targetY = currentScrollY + targetSection.getBoundingClientRect().top - 
-                       (windowHeight - targetSection.offsetHeight) / 2;
-
-        window.scrollTo({
-          top: targetY,
-          behavior: 'smooth'
-        });
-
-        setTimeout(() => {
-          isAnimating.current = false;
-        }, 1000);
-      }
+    let targetIndex = currentSectionIndex;
+    if (direction > 0 && currentSectionIndex < sections.length - 1) {
+      targetIndex = currentSectionIndex + 1;
+    } else if (direction < 0 && currentSectionIndex > 0) {
+      targetIndex = currentSectionIndex - 1;
     }
 
-    // 일정 시간 후 값 리셋
+    const targetSection = sections[targetIndex];
+
+    if (targetSection && targetIndex !== currentSectionIndex) {
+      isAnimating.current = true;
+      lastScrollTime.current = performance.now();
+      scrollAccumulator.current = 0;
+
+      const targetY = currentScrollY + targetSection.getBoundingClientRect().top - 
+                     (windowHeight - targetSection.offsetHeight) / 2;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth'
+      });
+
+      setTimeout(() => {
+        isAnimating.current = false;
+      }, 1000);
+    }
+  }, []);
+
+  const handleWheel = useCallback((e) => {
+    if (isAnimating.current) return;
+
+    const currentTime = performance.now();
+    if (currentTime - lastScrollTime.current < 50) return;
+
+    scrollAccumulator.current += Math.abs(e.deltaY);
+
+    if (scrollAccumulator.current > SCROLL_THRESHOLD) {
+      moveToSection(Math.sign(e.deltaY));
+    }
+
     if (!isAnimating.current) {
       setTimeout(() => {
         scrollAccumulator.current = 0;
       }, 200);
     }
+  }, [moveToSection]);
+
+  const handleTouchStart = useCallback((e) => {
+    touchStartY.current = e.touches[0].clientY;
   }, []);
+
+  const handleTouchMove = useCallback((e) => {
+    if (isAnimating.current) {
+      e.preventDefault();
+      return;
+    }
+
+    touchMoveY.current = e.touches[0].clientY;
+    const touchDiff = touchStartY.current - touchMoveY.current;
+
+    // 모바일 터치 움직임 -> 섹션이동
+    if (Math.abs(touchDiff) > TOUCH_THRESHOLD) {
+      e.preventDefault();
+      moveToSection(Math.sign(touchDiff));
+      // 터치 초기화
+      touchStartY.current = touchMoveY.current;
+    }
+  }, [moveToSection]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -109,13 +133,38 @@ const MainContent = () => {
       observer.observe(section);
     });
 
+    // 이벤트 리스너
     window.addEventListener('wheel', handleWheel, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: false });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
 
     return () => {
       observer.disconnect();
       window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
-  }, [handleWheel]);
+  }, [handleWheel, handleTouchStart, handleTouchMove]);
+
+  // CSS 스타일 하단
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      html, body {
+        overscroll-behavior: none;
+        touch-action: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      @media (max-width: 768px) {
+        .section {
+          height: 100vh;
+          overflow: hidden;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   return (
     <div>
@@ -150,6 +199,7 @@ const MainContent = () => {
 };
 
 const App = () => {
+  // 앱 컴포넌트 코드는 동일하게 유지
   useEffect(() => {
     ChannelService.loadScript();
     ChannelService.boot({
