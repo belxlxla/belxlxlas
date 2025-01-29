@@ -22,8 +22,10 @@ const MainContent = () => {
   const scrollAccumulator = useRef(0);
   const touchStartY = useRef(0);
   const touchMoveY = useRef(0);
+  const lastTouchTime = useRef(0);
   const SCROLL_THRESHOLD = 100; // 웹 임계값
-  const TOUCH_THRESHOLD = 50; // 모바일 스크롤 임계값
+  const TOUCH_THRESHOLD = 150; // 모바일 스크롤 임계값 증가
+  const RESISTANCE_ZONE = 0.001; // 스크롤 저항 구간 (뷰포트 높이의 20%)
 
   const moveToSection = useCallback((direction) => {
     const sections = Array.from(document.querySelectorAll('section[id]'))
@@ -92,6 +94,7 @@ const MainContent = () => {
 
   const handleTouchStart = useCallback((e) => {
     touchStartY.current = e.touches[0].clientY;
+    lastTouchTime.current = performance.now();
   }, []);
 
   const handleTouchMove = useCallback((e) => {
@@ -100,15 +103,48 @@ const MainContent = () => {
       return;
     }
 
+    // 모바일 디바이스 체크
+    const isMobile = window.innerWidth <= 768;
+    if (!isMobile) return;
+
     touchMoveY.current = e.touches[0].clientY;
     const touchDiff = touchStartY.current - touchMoveY.current;
+    const currentTime = performance.now();
+    
+    // 현재 섹션에서의 상대적 위치 계산
+    const currentSection = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2)
+      ?.closest('section');
+    if (!currentSection) return;
 
-    // 모바일 터치 움직임 -> 섹션이동
-    if (Math.abs(touchDiff) > TOUCH_THRESHOLD) {
-      e.preventDefault();
-      moveToSection(Math.sign(touchDiff));
-      // 터치 초기화
-      touchStartY.current = touchMoveY.current;
+    const sectionRect = currentSection.getBoundingClientRect();
+    const relativePosition = (window.innerHeight / 2 - sectionRect.top) / sectionRect.height;
+
+    // 저항 구간에서의 동작
+    const isInResistanceZone = (
+      (touchDiff > 0 && relativePosition > (1 - RESISTANCE_ZONE)) || // 아래로 스크롤
+      (touchDiff < 0 && relativePosition < RESISTANCE_ZONE) // 위로 스크롤
+    );
+
+    if (isInResistanceZone) {
+      // 저항 구간에서는 임계값을 증가시킴
+      const adjustedThreshold = TOUCH_THRESHOLD * 3;
+      
+      if (Math.abs(touchDiff) > adjustedThreshold && 
+          (currentTime - lastTouchTime.current) > 100) {
+        e.preventDefault();
+        moveToSection(Math.sign(touchDiff));
+        touchStartY.current = touchMoveY.current;
+        lastTouchTime.current = currentTime;
+      }
+    } else {
+      // 일반 구간에서는 기본 동작 유지
+      if (Math.abs(touchDiff) > TOUCH_THRESHOLD && 
+          (currentTime - lastTouchTime.current) > 100) {
+        e.preventDefault();
+        moveToSection(Math.sign(touchDiff));
+        touchStartY.current = touchMoveY.current;
+        lastTouchTime.current = currentTime;
+      }
     }
   }, [moveToSection]);
 
@@ -146,19 +182,21 @@ const MainContent = () => {
     };
   }, [handleWheel, handleTouchStart, handleTouchMove]);
 
-  // CSS 스타일 하단
   useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
       html, body {
         overscroll-behavior: none;
-        touch-action: none;
         -webkit-overflow-scrolling: touch;
       }
       @media (max-width: 768px) {
+        html, body {
+          touch-action: pan-y pinch-zoom;
+        }
         .section {
-          height: 100vh;
-          overflow: hidden;
+          min-height: 100vh;
+          overflow: visible;
+          position: relative;
         }
       }
     `;
@@ -199,7 +237,6 @@ const MainContent = () => {
 };
 
 const App = () => {
-  // 앱 컴포넌트 코드는 동일하게 유지
   useEffect(() => {
     ChannelService.loadScript();
     ChannelService.boot({
