@@ -26,6 +26,32 @@ const INITIAL_FORM_STATE = {
 
 const DOMAINS = ["gmail.com", "naver.com", "kakao.com", "outlook.com", "yahoo.com", "직접 입력하기"];
 
+// 전화번호 포맷팅 함수
+const formatPhoneNumber = (value) => {
+  if (!value) return value;
+  
+  // 숫자만 추출
+  const numbers = value.replace(/[^\d]/g, '');
+  
+  // 각 패턴에 맞게 포맷팅
+  if (numbers.length === 12) { // XXXX-XXXX-XXXX 패턴
+    return `${numbers.slice(0,4)}-${numbers.slice(4,8)}-${numbers.slice(8)}`;
+  } 
+  else if (numbers.length === 11) { // XXX-XXXX-XXXX 패턴
+    return `${numbers.slice(0,3)}-${numbers.slice(3,7)}-${numbers.slice(7)}`;
+  }
+  else if (numbers.length <= 7) { // XX-XXX-XXXX 패턴
+    if (numbers.length <= 2) return numbers;
+    if (numbers.length <= 5) return `${numbers.slice(0,2)}-${numbers.slice(2)}`;
+    return `${numbers.slice(0,2)}-${numbers.slice(2,5)}-${numbers.slice(5)}`;
+  } 
+  else { // 기본 패턴 (XXX-XXXX-XXXX)
+    if (numbers.length <= 3) return numbers;
+    if (numbers.length <= 7) return `${numbers.slice(0,3)}-${numbers.slice(3)}`;
+    return `${numbers.slice(0,3)}-${numbers.slice(3,7)}-${numbers.slice(7)}`;
+  }
+};
+
 const Proposal = () => {
   const [formData, setFormData] = useState(INITIAL_FORM_STATE);
   const [domainState, setDomainState] = useState({
@@ -42,7 +68,14 @@ const Proposal = () => {
 
   const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    if (name === 'contact') {
+      // 전화번호 입력 필드인 경우 포맷팅 적용
+      const formattedValue = formatPhoneNumber(value);
+      setFormData(prev => ({ ...prev, [name]: formattedValue }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   }, []);
 
   const resetForm = () => {
@@ -265,15 +298,14 @@ const Proposal = () => {
             </FormGroup>
             
             <FormGroup label="Contact Information">
-            <input
+              <input
                 className="proposal-input"
-                type="text"
-                inputMode="numeric"
-                pattern="[0-9]*"
+                type="tel"
                 name="contact"
-                placeholder="연락처를 입력해주세요"
+                placeholder="전화번호 혹은 휴대폰 번호를 입력해 주세요"
                 value={formData.contact}
                 onChange={handleInputChange}
+                maxLength="14"
               />
             </FormGroup>
           </div>
@@ -344,27 +376,25 @@ const FormGroup = ({ label, children, className = "" }) => (
 );
 
 const DomainDropdown = ({ isOpen, selected, onToggle, onSelect }) => (
-  <div className="proposal-dropdown" onClick={onToggle}>
+  <div className="proposal-dropdown" data-open={isOpen} onClick={onToggle}>
     <div className="proposal-dropdown-header">
       <span>{selected || "도메인 선택"}</span>
       <Icons.ChevronDown />
     </div>
-    {isOpen && (
-      <div className="proposal-dropdown-content">
-        {DOMAINS.map((domain, index) => (
-          <div
-            key={index}
-            className="proposal-dropdown-item"
-            onClick={(e) => {
-              e.stopPropagation();
-              onSelect(domain);
-            }}
-          >
-            {domain}
-          </div>
-        ))}
-      </div>
-    )}
+    <div className="proposal-dropdown-content">
+      {DOMAINS.map((domain, index) => (
+        <div
+          key={index}
+          className="proposal-dropdown-item"
+          onClick={(e) => {
+            e.stopPropagation();
+            onSelect(domain);
+          }}
+        >
+          {domain}
+        </div>
+      ))}
+    </div>
   </div>
 );
 
