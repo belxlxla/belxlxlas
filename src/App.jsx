@@ -210,19 +210,19 @@ const MainContent = () => {
       <section id="main" className="section">
         <Main />
       </section>
-      <section id="about" className="section pt-100">
+      <section id="about" className="section">
         <About />
       </section>
-      <section id="skills" className="section pt-100">
+      <section id="skills" className="section">
         <Skills />
       </section>
-      <section id="design" className="section pt-200">
+      <section id="design" className="section">
         <Design />
       </section>
-      <section id="designwiki" className="section pt-100">
+      <section id="designwiki" className="section">
         <Designwiki />
       </section>
-      <section id="react" className="section react-section pt-40">
+      <section id="react" className="section">
         <ReactArea />
       </section>
       <section id="archive" className="section">
