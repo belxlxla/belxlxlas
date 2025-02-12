@@ -1,14 +1,15 @@
   /* Achive.css */
   .archive-wrapper {
     width: 100%;
-    height: 640px;
+    min-height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: #1a1a1a;
     position: relative;
+    justify-content: center;
     }
   
     .archive-title {
@@ -138,7 +139,7 @@
     @media (max-width: 1024px) {
     .archive-wrapper {
     height: auto;
-    padding: 60px 20px;
+    padding: 100px 20px 0;
     }
   
     .archive-banner {

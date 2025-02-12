@@ -12,6 +12,7 @@ import Design from './pages/design.jsx';
 import Designwiki from './pages/designwiki.jsx';
 import ReactArea from './pages/react.jsx';
 import ArchiveArea from './pages/archive.jsx';
+import Scene from './pages/scene.jsx';
 import Proposal from './pages/proposal.jsx';
 
 const CHANNEL_PLUGIN_KEY = 'b14f14c2-d96f-4696-b128-0f8d84e8609f';
@@ -225,9 +226,10 @@ const MainContent = () => {
         <ReactArea />
       </section>
       <section id="archive" className="section">
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <ArchiveArea />
-        </div>
+        <ArchiveArea />
+      </section>
+      <section id="scene" className="section">
+        <Scene />
       </section>
       <section id="proposals" className="section">
         <Proposal />
@@ -290,6 +292,7 @@ const App = () => {
           <Route path="/" element={<MainContent />} />
           <Route path="/designwiki" element={<Designwiki />} />
           <Route path="/archive" element={<ArchiveArea />} />
+          <Route path="/scene" element={<Scene />} />
         </Routes>
         <Footer />
       </div>
